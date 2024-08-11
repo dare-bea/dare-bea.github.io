@@ -12,6 +12,7 @@ html {
   color: #444;
   animation: bounce 1s infinite alternate;
   transition: background-color 0.3s, color 0.3s, font-family 0.3s;
+  font-size: max(12pt,1.6vh);
 }
 
 html, button, select {
@@ -67,7 +68,7 @@ ul.nav-bar li.push {
 
 ul.nav-bar li > * {
   display: block;
-  font-size: 12pt;
+  font-size: max(12pt,1.6vh);
 }
 
 ul.nav-bar li :is(*.interact, a, button, select) {
