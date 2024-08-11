@@ -1,22 +1,16 @@
 @keyframes bounce {
-  0%, 100% {
-    translate: -5px -10px;
+  from {
+    transform: translateY(-10px);
   }
-  25% {
-    translate: 5px -20px;
-  }
-  50% {
-    translate: 5px 0px;
-  }
-  75% {
-    translate: -5px -10px;
+  to {
+    transform: translateY(0px);
   }
 }
 
 html {
   background-color: lightgray;
   color: #444;
-  animation: bounce 1s linear infinite;
+  animation: bounce 1s infinite alternate;
 }
 
 html, button, select {
