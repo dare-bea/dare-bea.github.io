@@ -21,6 +21,7 @@ img {
   text-decoration: none;
   color: #333;
   background-color: #eee;
+
   border: 2px outset #aaa;
   transition: transform 0.3s, background-color 0.3s;
 }
@@ -57,7 +58,7 @@ ul.nav-bar li.push {
 
 ul.nav-bar li > * {
   display: block;
-  font-size: 12pt;
+  font-size: 1rem;
 }
 
 ul.nav-bar li :is(a, *.interact, button, select) {
