@@ -41,7 +41,6 @@ img {
 
 ul.nav-bar {
   list-style-type: none;
-  min-height: 5vh;
   margin: 0;
   padding: 0.4em 0.2em;
   display: flex;
@@ -49,7 +48,6 @@ ul.nav-bar {
 }
 
 ul.nav-bar li {
-  height: auto;
   margin: auto 0;
 }
 
