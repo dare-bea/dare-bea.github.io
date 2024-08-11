@@ -41,7 +41,7 @@ img {
 
 ul.nav-bar {
   list-style-type: none;
-  min-width: 10%;
+  min-height: 10vh;
   margin: 0;
   padding: 0.4em 0.2em;
   display: flex;
