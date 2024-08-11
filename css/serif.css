@@ -22,12 +22,12 @@ img {
   background-color: #eee;
   border: 2px outset #aaa;
   transition: all 0.3s;
-  transform: translateY(-3px);
 }
 
 *.interact:hover, button:hover, select:hover {
   background-color: #ddd;
   cursor: pointer;
+  transform: translateY(-3px);
 }
 
 *.interact:active, button:active, select:active {
@@ -68,7 +68,6 @@ ul.nav-bar li :is(*.interact, a, button, select) {
   background-color: #f8f8f8;
   border: none;
   transition: all 0.3s;
-  transform: translateY(-3px);
 }
 
 ul.nav-bar li :is(*.interact, a, button, select):hover {
@@ -76,6 +75,7 @@ ul.nav-bar li :is(*.interact, a, button, select):hover {
   padding-bottom: calc(0.6em - 2px);
   border-bottom: 2px solid dodgerblue;
   background-color: #f4f4f4;
+  transform: translateY(-3px);
 }
 
 ul.nav-bar li :is(*.interact, a, button, select):hover {
