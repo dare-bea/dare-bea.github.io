@@ -28,10 +28,10 @@ function cookieNotice(cvalue) {
     document.getElementById("cookie-notice").remove();
 }
 
-const cookieshtml = getSourceAsDOM("/cookienotice.html").body.innerHTML;
 const navhtml = getSourceAsDOM("/nav.html").body.innerHTML;
 
 if (getCookie("cookies") == null) {
+    const cookieshtml = getSourceAsDOM("/cookienotice.html").body.innerHTML;
     document.getElementById("header").innerHTML = cookieshtml + navhtml;
 } else {
     document.getElementById("header").innerHTML = navhtml;
