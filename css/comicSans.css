@@ -1,6 +1,16 @@
+@keyframes bounce {
+  from {
+    transform: translateY(-10px);
+  }
+  to {
+    transform: translateY(0px);
+  }
+}
+
 html {
   background-color: lightgray;
   color: #444;
+  animation: bounce 1s infinite alternate;
 }
 
 html, button, select {
