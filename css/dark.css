@@ -72,7 +72,8 @@ ul.nav-bar li :is(*.interact, a, button, select) {
   color: #fff;
   background-color: #444;
   border: none;
-  transition: all 0.3s;
+  transition-property: color, padding-bottom, border-bottom-width, background-color, transform;
+  transition-duration: 0.3s;
 }
 
 ul.nav-bar li :is(*.interact, a, button, select):hover {
