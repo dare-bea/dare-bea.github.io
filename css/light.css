@@ -67,6 +67,7 @@ ul.nav-bar li :is(a, *.interact, button, select) {
   color: #333;
   background-color: #f8f8f8;
   border: none;
+  transition: all 0.3s;
 }
 
 ul.nav-bar li :is(a, *.interact, button, select):hover {
@@ -75,6 +76,7 @@ ul.nav-bar li :is(a, *.interact, button, select):hover {
   border-bottom: 2px solid dodgerblue;
   background-color: #f4f4f4;
   cursor: pointer;
+  transform: translateY(-3px);
 }
 
 ul.nav-bar li :is(a, *.interact, button, select):active {
