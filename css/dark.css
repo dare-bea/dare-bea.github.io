@@ -1,6 +1,7 @@
 html {
   background-color: #303038;
   color: #f4f4f4;
+  transition: background-color 0.3s, color 0.3s, font-family 0.3s;
 }
 
 html, button, select {
