@@ -31,7 +31,7 @@ img {
   color: #333;
   background-color: #eee;
   border: 2px outset #aaa;
-  transition: all 0.3s;
+  transition: transform 0.3s, background-color 0.3s;
 }
 
 *.interact:hover, button:hover, select:hover {
@@ -111,7 +111,7 @@ ul.nav-bar li :is(*.interact, a, button, select):active {
   background-color: #eee;
   border-radius: 1em;
   padding: 0.2em 1em;
-  transition: all 0.3s;
+  transition: transform 0.3s, background-color 0.3s;
 }
 
 .card img {
