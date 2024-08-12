@@ -1,0 +1,28 @@
+{
+    "HTML Boilerplate": {
+        "prefix": "webpageboilerplate",
+        "body": [
+            "<!DOCTYPE html>",
+            "<html lang=\"en-US\">",
+            "",
+            "<head>",
+            "    <meta charset=\"UTF-8\">",
+            "    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">",
+            "    <link id=\"color\" href=\"/css/light.css\" rel=\"stylesheet\" />",
+            "    <link id=\"theme\" href=\"/css/light.css\" rel=\"stylesheet\" />",
+            "    <link href=\"/favicon.png\" rel=\"icon\" />",
+            "    <title>Title</title>",
+            "</head>",
+            "",
+            "<body>",
+            "    <header id=\"header\"></header>",
+            "    ",
+            "</body>",
+            "",
+            "<script src=\"/nav.js\"></script>",
+            "",
+            "</html>"
+        ],
+        "description": "A basic HTML boilerplate"
+    }
+}
