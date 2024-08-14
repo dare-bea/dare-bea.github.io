@@ -1,8 +1,6 @@
 html {
     background-color: #303038;
     color: #f4f4f4;
-    transition: background-color 0.3s, color 0.3s, font-family 0.3s;
-    font-size: max(12pt, 1.6vh);
 }
 
 html,
@@ -12,9 +10,6 @@ select {
 }
 
 img {
-    max-width: 96%;
-    min-height: 200px;
-    max-height: 80vh;
     filter: brightness(94%) grayscale(10%);
 }
 
@@ -33,29 +28,20 @@ a:active {
 *.interact,
 button,
 select {
-    padding: 0.6em 0.8em;
-    border-radius: 0.4em;
-    margin: 0 0.2em;
-    text-decoration: none;
     color: #f4f4f4;
     background-color: #444;
     border: 2px inset #aaa;
-    transition: transform 0.3s, background-color 0.3s;
 }
 
 *.interact:hover,
 button:hover,
 select:hover {
     background-color: #555;
-    cursor: pointer;
-    transform: translateY(-3px);
 }
 
 *.interact:active,
 button:active,
 select:active {
-    padding-top: 0.5em;
-    margin-top: 0.1em;
     background-color: #666;
 }
 

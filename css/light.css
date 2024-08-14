@@ -1,8 +1,6 @@
 html {
     background-color: white;
     color: black;
-    transition: background-color 0.3s, color 0.3s, font-family 0.3s;
-    font-size: max(12pt, 1.6vh);
 }
 
 html,
@@ -11,39 +9,23 @@ select {
     font-family: Roboto, Helvetica, Arial, sans-serif;
 }
 
-img {
-    max-width: 96%;
-    min-height: 200px;
-    max-height: 80vh;
-}
-
 *.interact,
 button,
 select {
-    padding: 0.6em 0.8em;
-    border-radius: 0.4em;
-    margin: 0 0.2em;
-    text-decoration: none;
     color: #333;
     background-color: #eee;
-
     border: 2px outset #aaa;
-    transition: transform 0.3s, background-color 0.3s;
 }
 
 *.interact:hover,
 button:hover,
 select:hover {
     background-color: #ddd;
-    cursor: pointer;
-    transform: translateY(-3px);
 }
 
 *.interact:active,
 button:active,
 select:active {
-    padding-top: 0.5em;
-    margin-top: 0.1em;
     background-color: #ccc;
 }
 
