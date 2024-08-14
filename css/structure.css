@@ -28,3 +28,41 @@ select:hover {
     padding-top: 0.5em;
     margin-top: 0.1em;
 }
+
+/* Top-Nav */
+
+ul.nav-bar {
+    list-style-type: none;
+    margin: 0;
+    padding: 0.4em 0.2em;
+    display: flex;
+}
+
+ul.nav-bar li {
+    margin: auto 0;
+}
+
+ul.nav-bar li.push {
+    margin-left: auto;
+}
+
+ul.nav-bar li>* {
+    display: block;
+    font-size: max(12pt, 1.6vh);
+}
+
+ul.nav-bar li :is(*.interact, a, button, select) {
+    padding: 0.6em 0.8em;
+    border-radius: 0.4em;
+    margin: 0 0.2em;
+    text-decoration: none;
+    border: none;
+    transition-property: color, padding-bottom, border-bottom-width, background-color, transform;
+    transition-duration: 0.3s;
+}
+
+ul.nav-bar li :is(*.interact, a, button, select):hover {
+    padding-bottom: calc(0.6em - 2px);
+    transform: translateY(-3px);
+    cursor: pointer;
+}
