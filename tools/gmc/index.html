@@ -2,27 +2,69 @@
 <html>
 
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width">
-  <title>Googlemedia Commons</title>
-  <link href="gmc.css" rel="stylesheet" type="text/css" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Googlemedia Commons</title>
+    <link id="theme" href="/css/light.css" rel="stylesheet" />
+    <link href="gmc.css" rel="stylesheet" type="text/css" />
+    <link href="/favicon.png" rel="icon" />
 </head>
 
 <body>
-  <header id="header"><nav>
-    <h1>Derek's Site</h1>
-    <a href="/">Home</a>
-      &gt; <a href="/tools/">Tools</a>
-      &gt; <strong>Googlemedia Commons</strong>
-  </nav></header>
-  <h1>Googlemedia Commons</h1>
-  <img src="googlemedia-commons.png" height=100>
-  <p><!--Tool by Derek Pena--></p>
-  <div id="searchbox">
-    <input type="text" id="query"></input>
-    <button type="button" onclick="gimgwc()" id="search"><!--Search--><img src="search-icon.png" height=20></button>
-  </div>
-  <script src="gmc.js"></script>
+    <header id="header">
+        <nav>
+            <h1>Derek's Site</h1>
+            <a href="/">Home</a>
+            &gt; <a href="/tools/">Tools</a>
+            &gt; <strong>Googlemedia Commons</strong>
+        </nav>
+    </header>
+    <h1>Googlemedia Commons</h1>
+    <img src="googlemedia-commons.png" height=100>
+    <p><!--Tool by Derek Pena--></p>
+    <div id="searchbox">
+        <input type="text" id="query"></input>
+        <button type="button" onclick="gimgwc()" id="search"><!--Search--><img src="search-icon.png" height=20></button>
+    </div>
+    <script src="gmc.js"></script>
 </body>
+
+<script>
+    function getCookie(cname) {
+        let name = cname + "=";
+        let decodedCookie = decodeURIComponent(document.cookie);
+        let ca = decodedCookie.split(';');
+        for (let i = 0; i < ca.length; i++) {
+            let c = ca[i];
+            while (c.charAt(0) == ' ') {
+                c = c.substring(1);
+            }
+            if (c.indexOf(name) == 0) {
+                return c.substring(name.length, c.length);
+            }
+        }
+        return null;
+    }
+
+    const theme = document.getElementById('theme');
+    const theme_select = getCookie("theme");
+    changeTheme()
+    function changeTheme() {
+        var theme_url = theme_select;
+        if (getCookie("cookies") == "ok") {
+            document.cookie = "theme=" + theme_url + "; path=/; max-age=2419200";
+        }
+        if (theme_url == "os-default") {
+            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                theme_url = "/css/dark.css";
+            } else {
+                theme_url = "/css/light.css"
+            }
+        }
+        theme.setAttribute('href', theme_url);
+    }
+
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', changeTheme);
+</script>
 
 </html>

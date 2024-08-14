@@ -1,8 +1,6 @@
 html {
     background-color: #303038;
     color: #f4f4f4;
-    transition: background-color 0.3s, color 0.3s, font-family 0.3s;
-    font-size: max(12pt, 1.6vh);
 }
 
 html,
@@ -12,9 +10,6 @@ select {
 }
 
 img {
-    max-width: 96%;
-    min-height: 200px;
-    max-height: 80vh;
     filter: brightness(94%) grayscale(10%);
 }
 
@@ -33,77 +28,38 @@ a:active {
 *.interact,
 button,
 select {
-    padding: 0.6em 0.8em;
-    border-radius: 0.4em;
-    margin: 0 0.2em;
-    text-decoration: none;
     color: #f4f4f4;
     background-color: #444;
     border: 2px inset #aaa;
-    transition: transform 0.3s, background-color 0.3s;
 }
 
 *.interact:hover,
 button:hover,
 select:hover {
     background-color: #555;
-    cursor: pointer;
-    transform: translateY(-3px);
 }
 
 *.interact:active,
 button:active,
 select:active {
-    padding-top: 0.5em;
-    margin-top: 0.1em;
     background-color: #666;
 }
 
 /* Top-Nav */
 
 ul.nav-bar {
-    list-style-type: none;
-    margin: 0;
-    padding: 0 0.2em 0.4em;
-    display: flex;
     border-bottom: 2px solid #666;
 }
 
-ul.nav-bar li {
-    margin: auto 0;
-}
-
-ul.nav-bar li.push {
-    margin-left: auto;
-}
-
-ul.nav-bar li>* {
-    display: block;
-    font-size: max(12pt, 1.6vh);
-}
-
 ul.nav-bar li :is(*.interact, a, button, select) {
-    padding: 0.6em 0.8em;
-    border-radius: 0.4em;
-    margin: 0 0.2em;
-    text-decoration: none;
     color: #fff;
     background-color: #444;
-    border: none;
-    transition-property: color, padding-bottom, border-bottom-width, background-color, transform;
-    transition-duration: 0.3s;
 }
 
 ul.nav-bar li :is(*.interact, a, button, select):hover {
     color: white;
-    padding-bottom: calc(0.6em - 2px);
     border-bottom: 2px solid dodgerblue;
     background-color: #555;
-    transform: translateY(-3px);
-}
-
-ul.nav-bar li :is(*.interact, a, button, select):hover {
-    cursor: pointer;
 }
 
 ul.nav-bar li :is(*.interact, a, button, select):active {
@@ -112,43 +68,11 @@ ul.nav-bar li :is(*.interact, a, button, select):active {
 
 /* Collections */
 
-.collection {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
-    grid-gap: 20px;
-}
-
 .card {
-    display: grid;
-    grid-template-rows: max-content 200px 1fr;
     border: 3px inset #888;
     background-color: #444;
-    border-radius: 1em;
-    padding: 0.2em 1em;
-    transition: transform 0.3s, background-color 0.3s;
-}
-
-.card img {
-    object-fit: cover;
-    width: 100%;
-    height: 100%;
 }
 
 .card:hover {
     background-color: #4c4c4c;
-    transform: translateY(-5px);
-}
-
-.collection > img {
-    display: grid;
-    object-fit: cover;
-    box-sizing: border-box;
-    width: 100%;
-    height: 100%;
-    transition: translate 0.3s, scale 0.3s;
-}
-
-.collection > img:hover {
-    translate: 0 -5px;
-    scale: 1.02;
 }
