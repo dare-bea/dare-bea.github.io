@@ -23,7 +23,7 @@ changeTheme()
 function changeTheme() {
     var theme_url = theme_select.value;
     if (getCookie("cookies") == "ok") {
-        document.cookie = "theme=" + theme_url + "; path=/; max-age=2419200";
+        document.cookie = "theme=" + theme_url + "; path=/; max-age=2419200; SameSite=Lax";
     }
     if (theme_url == "os-default") {
         if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {

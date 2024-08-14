@@ -23,7 +23,7 @@ function getCookie(cname) {
 }
 
 function cookieNotice(cvalue) {
-    document.cookie = 'cookies=' + cvalue + '; path=/; max-age=31536000';
+    document.cookie = 'cookies=' + cvalue + '; path=/; max-age=31536000; SameSite=Lax';
     if (cvalue == "ok") { changeTheme() };
     document.getElementById("cookie-notice").remove();
 }
