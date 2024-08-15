@@ -1,6 +1,17 @@
+@keyframes shake {
+    from {
+        transform: rotate(-1deg);
+    }
+
+    to {
+        transform: rotate(1deg);
+    }
+}
+
 html {
     background-color: maroon;
     color: #aaa;
+    animation: shake 0.1s linear infinite alternate;
 }
 
 html,
