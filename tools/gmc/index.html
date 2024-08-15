@@ -47,7 +47,9 @@
     }
 
     const theme = document.getElementById('theme');
-    const theme_select = getCookie("theme");
+    const theme_select = getCookie("theme") !== null
+        ? getCookie("theme")
+        : "os-default";
     changeTheme()
     function changeTheme() {
         var theme_url = theme_select;
