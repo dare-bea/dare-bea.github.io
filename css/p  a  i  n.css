@@ -1,0 +1,67 @@
+html {
+    background-color: maroon;
+    color: #aaa;
+}
+
+html,
+button,
+select {
+    font-family: Papyrus, 'Times New Roman', Times, serif;
+    text-transform: uppercase;
+}
+
+img {
+    filter: brightness(90%) sepia(60%) saturate(200%) hue-rotate(-30deg);
+}
+
+*.interact,
+button,
+select {
+    color: #aaa;
+    background-color: #555;
+    border: 2px outset #aaa;
+}
+
+*.interact:hover,
+button:hover,
+select:hover {
+    background-color: #666;
+}
+
+*.interact:active,
+button:active,
+select:active {
+    background-color: #777;
+}
+
+/* Top-Nav */
+
+ul.nav-bar {
+    border-bottom: 2px solid #999;
+}
+
+ul.nav-bar li :is(a, *.interact, button, select) {
+    color: #aaa;
+    background-color: #555;
+}
+
+ul.nav-bar li :is(a, *.interact, button, select):hover {
+    color: crimson;
+    border-bottom: 2px solid crimson;
+    background-color: #666;
+}
+
+ul.nav-bar li :is(a, *.interact, button, select):active {
+    background-color: #777;
+}
+
+/* Collections */
+
+.card {
+    border: 3px outset #aaa;
+    background-color: #555;
+}
+
+.card:hover {
+    background-color: #666;
+}
