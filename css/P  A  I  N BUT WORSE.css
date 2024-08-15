@@ -1,17 +1,24 @@
-@keyframes shake {
-    from {
-        transform: rotate(-360deg);
+@keyframes spin {
+    0% {
+        rotate: 0deg;
+        translate: -10em;
     }
 
-    to {
-        transform: rotate(360deg);
+    50% {
+        rotate: 360deg;
+        translate: 10em;
+    }
+
+    100% {
+        rotate: 0deg;
+        translate: -10em;
     }
 }
 
 html {
     background-color: maroon;
     color: #aaa;
-    animation: shake 0.1s linear infinite alternate;
+    animation: spin 0.5s linear infinite;
 }
 
 html,
