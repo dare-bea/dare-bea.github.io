@@ -14,12 +14,6 @@ function getCookie(cname) {
     return null;
 }
 
-const theme = document.getElementById('theme');
-const theme_select = document.getElementById('theme-select');
-if (getCookie("theme") != null) {
-    theme_select.value = getCookie("theme");
-}
-changeTheme()
 function changeTheme() {
     var theme_url = theme_select.value;
     if (getCookie("cookies") == "ok") {
@@ -35,4 +29,13 @@ function changeTheme() {
     theme.setAttribute('href', theme_url);
 }
 
-window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', changeTheme);
+function runTheme () {
+    const theme = document.getElementById('theme');
+    window.theme_select = document.getElementById('theme-select');
+    if (getCookie("theme") != null) {
+        theme_select.value = getCookie("theme");
+    }
+    changeTheme()
+
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', changeTheme);
+}

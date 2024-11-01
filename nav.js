@@ -1,9 +1,8 @@
-function getSourceAsDOM(url) {
-    xmlhttp = new XMLHttpRequest();
-    xmlhttp.open("GET", url, false);
-    xmlhttp.send();
-    parser = new DOMParser();
-    return parser.parseFromString(xmlhttp.responseText, "text/html");
+async function getSourceAsDOM(url) {
+    const response = await fetch(url);
+    const text = await response.text();
+    const parser = new DOMParser();
+    return parser.parseFromString(text, "text/html");
 }
 
 function getCookie(cname) {
@@ -28,11 +27,19 @@ function cookieNotice(cvalue) {
     document.getElementById("cookie-notice").remove();
 }
 
-const navhtml = getSourceAsDOM("/nav.html").body.innerHTML;
-
-if (getCookie("cookies") == null) {
-    const cookieshtml = getSourceAsDOM("/cookienotice.html").body.innerHTML;
-    document.getElementById("header").innerHTML = cookieshtml + navhtml;
-} else {
-    document.getElementById("header").innerHTML = navhtml;
+async function loadNavigation() {
+    const navDOM = await getSourceAsDOM("/nav.html");
+    const navhtml = navDOM.body.innerHTML;
+    
+    if (getCookie("cookies") == null) {
+        const cookiesDOM = await getSourceAsDOM("/cookienotice.html");
+        const cookieshtml = cookiesDOM.body.innerHTML;
+        document.getElementById("header").innerHTML = cookieshtml + navhtml;
+    } else {
+        document.getElementById("header").innerHTML = navhtml;
+    }
 }
+
+// Call the async function
+loadNavigation()
+.then(runTheme);
