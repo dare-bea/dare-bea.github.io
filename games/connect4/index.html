@@ -15,8 +15,15 @@
     <header id="header"></header>
     <h1>Connect 4</h1>
     <button onclick="new_game()">New Game</button>
-    <input type="checkbox" id="botfirst" name="botfirst" checked />
+    <input type="checkbox" id="botfirst" name="botfirst"/>
     <label for="botfirst">Bot Goes First</label>
+    <select id="difficulty" name="difficulty">
+        <option value='{"max_depth": 2, "min_depth": 1, "dumb_chance": 0.2}'>Easy</option>
+        <option value='{"max_depth": 3, "min_depth": 2, "dumb_chance": 0.3}' selected>Normal</option>
+        <option value='{"max_depth": 5, "min_depth": 2, "dumb_chance": 0.3}'>Hard</option>
+        <option value='{"max_depth": 6, "min_depth": 6, "dumb_chance": 0}'>Impossible</option>
+    </select>
+    <label for="difficulty">Difficulty</label>
     <table id="connect-4-board">
         <tr>
             <th><button onclick="player_play_disk(0)">Play</button></th>

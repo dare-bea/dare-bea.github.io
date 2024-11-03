@@ -73,7 +73,7 @@ class GameNode {
     return "inprogress";
   }
   evaluate () {
-    const scores = [0, 1, 4, 10, Infinity]
+    const scores = [0, 1, 4, 10, 99999]
     var score = 0
     for (var [a, b, c] of [[0, 1, 0], [0, 0, 1], [0, 1, 1], [3, -1, 1]])
     for (var x = a; x < this.width - 3*b - a; x++) 
@@ -93,7 +93,9 @@ class GameNode {
 function player_play_disk (column) {
   if (node.board[column].length < node.height && !node.isterminal) {
     node.board[column].push(node.diskCount % 2 ? p2 : p1);
-    bot_play_disk();
+    if (!node.isterminal){
+      bot_play_disk();
+    }
     update_screen();
   }
 }
@@ -101,10 +103,14 @@ function player_play_disk (column) {
 function bot_play_disk () {
   var bestIndex;
   var bestScore = node.diskCount % 2 ? Infinity : -Infinity;
+  var bot_depth = DIFFICULTY.max_depth
+  while (bot_depth > DIFFICULTY.min_depth && Math.random() < DIFFICULTY.dumb_chance) {
+    bot_depth -= 1;
+  }
   for (childIndex in node.children) {
-    var score = alphabeta(node.children[childIndex], BOT_DEPTH, node.diskCount % 2);
+    var score = alphabeta(node.children[childIndex], bot_depth, node.diskCount % 2);
     console.log(childIndex, score)
-    if (node.diskCount % 2 ? (score < bestScore) : (score > bestScore)) {
+    if (node.diskCount % 2 ? (score <= bestScore) : (score >= bestScore)) {
       bestIndex = childIndex;
       bestScore = score;
     }
@@ -159,15 +165,15 @@ function update_screen () {
   }
 }
 
-const BOT_DEPTH = 5;
-
+var node = new GameNode(7, 6);
 var isdisabled = false;
-node = new GameNode(7, 6)
+var DIFFICULTY;
 update_screen();
 
 function new_game () {
   node = new GameNode(7, 6);
   isdisabled = false;
+  DIFFICULTY = JSON.parse(document.getElementById("difficulty").value);
   if (document.getElementById("gameover") !== null) {
     document.getElementById("gameover").outerHTML = "";
   }
@@ -176,3 +182,5 @@ function new_game () {
   }
   update_screen();
 }
+
+new_game();
