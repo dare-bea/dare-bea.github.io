@@ -9,7 +9,10 @@ function count (arr, query) {
 }
 
 function alphabeta (node, depth, maxing, α = -Infinity, β=Infinity) {
-  if (depth == 0 || node.isterminal) {
+  if (node.isterminal) {
+    return {p1: Infinity, p2: -Infinity, "draw": 0}[node.status()];
+  }
+  if (depth == 0) {
     return node.evaluate();
   }
   if (maxing) {
