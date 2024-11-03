@@ -18,77 +18,13 @@
     <input type="checkbox" id="botfirst" name="botfirst"/>
     <label for="botfirst">Bot Goes First</label>
     <select id="difficulty" name="difficulty">
-        <option value='{"max_depth": 2, "min_depth": 1, "dumb_chance": 0.2}'>Easy</option>
-        <option value='{"max_depth": 3, "min_depth": 2, "dumb_chance": 0.3}' selected>Normal</option>
-        <option value='{"max_depth": 5, "min_depth": 2, "dumb_chance": 0.3}'>Hard</option>
-        <option value='{"max_depth": 6, "min_depth": 6, "dumb_chance": 0}'>Impossible</option>
+        <option value='{"max_depth": 3, "min_depth": 1, "dumb_chance": 0.1}'>Easy</option>
+        <option value='{"max_depth": 4, "min_depth": 3, "dumb_chance": 0.8}' selected>Normal</option>
+        <option value='{"max_depth": 6, "min_depth": 4, "dumb_chance": 0.3}'>Hard</option>
+        <option value='{"max_depth": 7, "min_depth": 7, "dumb_chance": 0}'>Impossible</option>
     </select>
     <label for="difficulty">Difficulty</label>
-    <table id="connect-4-board">
-        <tr>
-            <th><button onclick="player_play_disk(0)">Play</button></th>
-            <th><button onclick="player_play_disk(1)">Play</button></th>
-            <th><button onclick="player_play_disk(2)">Play</button></th>
-            <th><button onclick="player_play_disk(3)">Play</button></th>
-            <th><button onclick="player_play_disk(4)">Play</button></th>
-            <th><button onclick="player_play_disk(5)">Play</button></th>
-            <th><button onclick="player_play_disk(6)">Play</button></th>
-        </tr>
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
-    </table>
+    <table id="connect-4-board"></table>
     
 </body>
 
