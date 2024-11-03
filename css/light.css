@@ -1,6 +1,6 @@
 html {
-    background-color: white;
-    color: black;
+    --theme_bg: white;
+    --theme_fg: black;
 }
 
 html,
@@ -19,13 +19,19 @@ select {
 
 *.interact:hover,
 button:hover,
-select:hover {
+select:hover,
+*.interact:disabled,
+button:disabled,
+select:disabled {
     background-color: #ddd;
 }
 
 *.interact:active,
 button:active,
-select:active {
+select:active,
+*.interact:disabled:hover,
+button:disabled:hover,
+select:disabled:hover {
     background-color: #ccc;
 }
 

@@ -1,0 +1,23 @@
+table#connect-4-board {
+    background-color: blue;
+}
+
+table#connect-4-board td {
+    background-color: var(--theme_bg, white);
+    border: 1px solid black;
+    border-radius: 50%;
+    text-align: center;
+    width: 75px;
+    height: 75px;
+    font-weight: bold;
+}
+
+table#connect-4-board td.p1 {
+    background-color: red;
+    color: white;
+}
+
+table#connect-4-board td.p2 {
+    background-color: yellow;
+    color: black;
+}

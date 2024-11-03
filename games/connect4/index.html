@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link id="structure" href="/css/structure.css" rel="stylesheet">
+    <link id="connect4" href="connect4.css" rel="stylesheet">
+    <link id="theme" href="/css/light.css" rel="stylesheet">
+    <link href="/favicon.png" rel="icon">
+    <title>Connect 4</title>
+</head>
+
+<body>
+    <header id="header"></header>
+    <h1>Connect 4</h1>
+    <button onclick="new_game()">New Game</button>
+    <input type="checkbox" id="botfirst" name="botfirst" checked />
+    <label for="botfirst">Bot Goes First</label>
+    <table id="connect-4-board">
+        <tr>
+            <th><button onclick="player_play_disk(0)">Play</button></th>
+            <th><button onclick="player_play_disk(1)">Play</button></th>
+            <th><button onclick="player_play_disk(2)">Play</button></th>
+            <th><button onclick="player_play_disk(3)">Play</button></th>
+            <th><button onclick="player_play_disk(4)">Play</button></th>
+            <th><button onclick="player_play_disk(5)">Play</button></th>
+            <th><button onclick="player_play_disk(6)">Play</button></th>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+    </table>
+    
+</body>
+
+<script src="/theme.js"></script>
+<script src="/nav.js"></script>
+<script src="connect4.js"></script>
+
+</html>

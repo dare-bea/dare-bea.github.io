@@ -9,8 +9,8 @@
 }
 
 html {
-    background-color: maroon;
-    color: #aaa;
+    --theme_bg: maroon;
+    --theme_fg: #aaa;
     animation: shake 0.1s linear infinite alternate;
 }
 
@@ -35,13 +35,19 @@ select {
 
 *.interact:hover,
 button:hover,
-select:hover {
+select:hover,
+*.interact:disabled,
+button:disabled,
+select:disabled {
     background-color: #666;
 }
 
 *.interact:active,
 button:active,
-select:active {
+select:active,
+*.interact:disabled:hover,
+button:disabled:hover,
+select:disabled:hover {
     background-color: #777;
 }
 

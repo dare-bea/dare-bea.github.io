@@ -9,8 +9,8 @@
 }
 
 html {
-    background-color: lightgray;
-    color: #444;
+    --theme_bg: lightgray;
+    --theme_fg: #444;
     animation: bounce 1s infinite alternate;
 }
 
@@ -30,13 +30,19 @@ select {
 
 *.interact:hover,
 button:hover,
-select:hover {
+select:hover,
+*.interact:disabled,
+button:disabled,
+select:disabled {
     background-color: #ddd;
 }
 
 *.interact:active,
 button:active,
-select:active {
+select:active,
+*.interact:disabled:hover,
+button:disabled:hover,
+select:disabled:hover {
     background-color: #ccc;
 }
 
