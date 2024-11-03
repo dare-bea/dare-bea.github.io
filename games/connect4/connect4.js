@@ -73,7 +73,6 @@ class GameNode {
     return "inprogress";
   }
   evaluate () {
-    const scores = [0, 1, 4, 10, 99999]
     var score = 0
     for (var [a, b, c] of [[0, 1, 0], [0, 0, 1], [0, 1, 1], [3, -1, 1]])
     for (var x = a; x < this.width - 3*b - a; x++) 
@@ -81,9 +80,9 @@ class GameNode {
       var line = [0, 1, 2, 3].map(i => this.board[x+i*b][y+i*c]);
       if (line.every(d => d === undefined)) continue;
       if (line.every(d => d !== p2)) {
-        score += scores[count(line, p1)]
+        score += DIFFICULTY.scores[count(line, p1)]
       } else {
-        score -= scores[count(line, p2)]
+        score -= DIFFICULTY.scores[count(line, p2)]
       }
     }
     return score;
