@@ -18,10 +18,10 @@
     <input type="checkbox" id="botfirst" name="botfirst"/>
     <label for="botfirst">Bot Goes First</label>
     <select id="difficulty" name="difficulty">
-        <option value='{"max_depth": 3, "min_depth": 1, "dumb_chance": 0.1}'>Easy</option>
-        <option value='{"max_depth": 4, "min_depth": 3, "dumb_chance": 0.8}' selected>Normal</option>
-        <option value='{"max_depth": 6, "min_depth": 4, "dumb_chance": 0.3}'>Hard</option>
-        <option value='{"max_depth": 7, "min_depth": 7, "dumb_chance": 0}'>Impossible</option>
+        <option value='{"max_depth": 3, "min_depth": 1, "dumb_chance": 0.10, "scores": [0, 1, 4, 15, 100]}'>Easy</option>
+        <option value='{"max_depth": 4, "min_depth": 3, "dumb_chance": 0.80, "scores": [0, 1, 4, 12, 5000]}' selected>Normal</option>
+        <option value='{"max_depth": 5, "min_depth": 3, "dumb_chance": 0.40, "scores": [0, 1, 4, 10, 10000]}'>Hard</option>
+        <option value='{"max_depth": 7, "min_depth": 7, "dumb_chance": 0.00, "scores": [0, 1, 4, 10, 500000]}'>Impossible</option>
     </select>
     <label for="difficulty">Difficulty</label>
     <table id="connect-4-board"></table>
