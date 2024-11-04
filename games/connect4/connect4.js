@@ -167,6 +167,8 @@ function update_screen () {
   }
 }
 
+const diffSelect = document.getElementById("difficulty");
+
 var node = new GameNode(7, 6);
 var isdisabled = false;
 var DIFFICULTY;
@@ -175,7 +177,8 @@ update_screen();
 function new_game () {
   node = new GameNode(7, 6);
   isdisabled = false;
-  DIFFICULTY = JSON.parse(document.getElementById("difficulty").value);
+  DIFFICULTY = JSON.parse(diffSelect.value);
+  document.getElementById("difficulty-label").innerHTML = `Vs. ${diffSelect.options[diffSelect.selectedIndex].text} Difficulty (as ${document.getElementById('botfirst').checked ? 'Yellow' : 'Red'})`
   if (document.getElementById("gameover") !== null) {
     document.getElementById("gameover").outerHTML = "";
   }
