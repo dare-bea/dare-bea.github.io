@@ -133,19 +133,19 @@ function update_screen (highlights = []) {
   }
   console.log(log);
   document.getElementById("screen").textContent = log;*/
-  function disp(item, element_class = null) {
+  function disp(element_class = null) {
     if (element_class === null) {
       return ({
         undefined: "<td>-</td>",
         p1: "<td class='p1'>R</td>",
         p2: "<td class='p2'>Y</td>"
-      }[item]);
+      });
     } else {
       return ({
         undefined: "<td class='"+element_class+"'>-</td>",
         p1: "<td class='p1 "+element_class+"'>R</td>",
         p2: "<td class='p2 "+element_class+"'>Y</td>"
-      }[item]);
+      });
     }
   }
   var disabledtext = isdisabled ? "disabled" : "";
@@ -163,13 +163,13 @@ function update_screen (highlights = []) {
   for (var row = node.height - 1; row >= 0; row--) {
     html += `
     <tr>
-      ${disp(node.board[0][row], highlights.includes([0, row]) ? "highlight" : null)}
-      ${disp(node.board[1][row], highlights.includes([1, row]) ? "highlight" : null)}
-      ${disp(node.board[2][row], highlights.includes([2, row]) ? "highlight" : null)}
-      ${disp(node.board[3][row], highlights.includes([3, row]) ? "highlight" : null)}
-      ${disp(node.board[4][row], highlights.includes([4, row]) ? "highlight" : null)}
-      ${disp(node.board[5][row], highlights.includes([5, row]) ? "highlight" : null)}
-      ${disp(node.board[6][row], highlights.includes([6, row]) ? "highlight" : null)}
+      ${disp(highlights.some(x => x[0] == 0 && x[1] == row) ? "highlight" : null)[node.board[0][row]]}
+      ${disp(highlights.some(x => x[0] == 1 && x[1] == row) ? "highlight" : null)[node.board[1][row]]}
+      ${disp(highlights.some(x => x[0] == 2 && x[1] == row) ? "highlight" : null)[node.board[2][row]]}
+      ${disp(highlights.some(x => x[0] == 3 && x[1] == row) ? "highlight" : null)[node.board[3][row]]}
+      ${disp(highlights.some(x => x[0] == 4 && x[1] == row) ? "highlight" : null)[node.board[4][row]]}
+      ${disp(highlights.some(x => x[0] == 5 && x[1] == row) ? "highlight" : null)[node.board[5][row]]}
+      ${disp(highlights.some(x => x[0] == 6 && x[1] == row) ? "highlight" : null)[node.board[6][row]]}
     </tr>`;
   }
   document.getElementById("connect-4-board").innerHTML = html;
