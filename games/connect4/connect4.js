@@ -134,7 +134,7 @@ function update_screen (highlights) {
   console.log(log);
   document.getElementById("screen").textContent = log;*/
   function disp(item, element_class = null) {
-    if (class === null) {
+    if (element_class === null) {
       return {
         undefined: "<td class='nodisk'>-</td>",
         p1: "<td class='p1'>R</td>",
