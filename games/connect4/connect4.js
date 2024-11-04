@@ -133,15 +133,15 @@ function update_screen (highlights) {
   }
   console.log(log);
   document.getElementById("screen").textContent = log;*/
-  function disp(item, class=null) {
+  function disp(item, class = null) {
     return (class === null ? {
-      undefined: `<td class='nodisk'>-</td>`,
-      p1: `<td class='p1'>R</td>`,
-      p2: `<td class='p2'>Y</td>`
+      undefined: "<td class='nodisk'>-</td>",
+      p1: "<td class='p1'>R</td>",
+      p2: "<td class='p2'>Y</td>"
     } : {
-      undefined: `<td class='nodisk ${class}'>-</td>`,
-      p1: `<td class='p1 ${class}'>R</td>`,
-      p2: `<td class='p2 ${class}'>Y</td>`
+      undefined: "<td class='nodisk "+class+"'>-</td>",
+      p1: "<td class='p1 "+class+"'>R</td>",
+      p2: "<td class='p2 "+class+"'>Y</td>"
     })[item];
   }
   var disabledtext = isdisabled ? "disabled" : "";
