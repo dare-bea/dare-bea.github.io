@@ -22,6 +22,10 @@ table#connect-4-board td.p2 {
     color: black;
 }
 
+table#connect-4-board td.highlight {
+    border: 2px solid magenta;
+}
+
 #difficulty-label {
     font-weight: bold;
 }
