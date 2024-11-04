@@ -21,3 +21,7 @@ table#connect-4-board td.p2 {
     background-color: yellow;
     color: black;
 }
+
+#difficulty-label {
+    font-weight: bold;
+}
