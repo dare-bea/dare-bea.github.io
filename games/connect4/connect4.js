@@ -136,13 +136,13 @@ function update_screen (highlights = []) {
   function disp(item, element_class = null) {
     if (element_class === null) {
       return ({
-        undefined: "<td class='nodisk'>-</td>",
+        undefined: "<td>-</td>",
         p1: "<td class='p1'>R</td>",
         p2: "<td class='p2'>Y</td>"
       }[item]);
     } else {
       return ({
-        undefined: "<td class='nodisk "+element_class+"'>-</td>",
+        undefined: "<td class='"+element_class+"'>-</td>",
         p1: "<td class='p1 "+element_class+"'>R</td>",
         p2: "<td class='p2 "+element_class+"'>Y</td>"
       }[item]);
