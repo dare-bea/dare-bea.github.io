@@ -95,10 +95,12 @@ class GameNode {
 function player_play_disk (column) {
   if (node.board[column].length < node.height && !node.isterminal) {
     node.board[column].push(node.diskCount % 2 ? p2 : p1);
+    var highlight = [column, node.board[column].length-1];
     if (!node.isterminal){
-      bot_play_disk();
+      var botCol = bot_play_disk();
+      highlight = [botCol, node.board[botCol].length-1];
     }
-    update_screen();
+    update_screen([highlight]);
   }
 }
 
@@ -119,9 +121,10 @@ function bot_play_disk () {
   }
   console.log(bestIndex);
   node.board[bestIndex].push(node.diskCount % 2 ? p2 : p1);
+  return bestIndex
 }
 
-function update_screen () {
+function update_screen (highlights) {
   /*var log = "";
   for (var y = node.height - 1; y >= 0; y--) {
     for (var x = 0; x < node.width; x++)
@@ -130,11 +133,17 @@ function update_screen () {
   }
   console.log(log);
   document.getElementById("screen").textContent = log;*/
-  const disp = {
-    undefined: "<td>-</td>",
-    p1: "<td class='p1'>R</td>",
-    p2: "<td class='p2'>Y</td>"
-  };
+  function disp(item, class=null) {
+    return (class === null ? {
+      undefined: `<td class='nodisk'>-</td>`,
+      p1: `<td class='p1'>R</td>`,
+      p2: `<td class='p2'>Y</td>`
+    } : {
+      undefined: `<td class='nodisk ${class}'>-</td>`,
+      p1: `<td class='p1 ${class}'>R</td>`,
+      p2: `<td class='p2 ${class}'>Y</td>`
+    })[item];
+  }
   var disabledtext = isdisabled ? "disabled" : "";
   var html = `
   <tr>
@@ -150,13 +159,13 @@ function update_screen () {
   for (var row = node.height - 1; row >= 0; row--) {
     html += `
     <tr>
-      ${disp[node.board[0][row]]}
-      ${disp[node.board[1][row]]}
-      ${disp[node.board[2][row]]}
-      ${disp[node.board[3][row]]}
-      ${disp[node.board[4][row]]}
-      ${disp[node.board[5][row]]}
-      ${disp[node.board[6][row]]}
+      ${disp(node.board[0][row], highlights.includes([0, row]) ? "highlight" : null)}
+      ${disp(node.board[1][row], highlights.includes([1, row]) ? "highlight" : null)}
+      ${disp(node.board[2][row], highlights.includes([2, row]) ? "highlight" : null)}
+      ${disp(node.board[3][row], highlights.includes([3, row]) ? "highlight" : null)}
+      ${disp(node.board[4][row], highlights.includes([4, row]) ? "highlight" : null)}
+      ${disp(node.board[5][row], highlights.includes([5, row]) ? "highlight" : null)}
+      ${disp(node.board[6][row], highlights.includes([6, row]) ? "highlight" : null)}
     </tr>`;
   }
   document.getElementById("connect-4-board").innerHTML = html;
@@ -182,10 +191,12 @@ function new_game () {
   if (document.getElementById("gameover") !== null) {
     document.getElementById("gameover").outerHTML = "";
   }
+  var highlights = [];
   if (document.getElementById("botfirst").checked) {
-    bot_play_disk();
+    var botCol = bot_play_disk();
+    highlights = [[botCol, 0]];
   }
-  update_screen();
+  update_screen(highlights);
 }
 
 new_game();
