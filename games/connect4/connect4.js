@@ -107,21 +107,27 @@ function player_play_disk (column) {
 function bot_play_disk () {
   var bestIndex;
   var bestScore = node.diskCount % 2 ? Infinity : -Infinity;
-  var bot_depth = DIFFICULTY.max_depth
+  var bot_depth = DIFFICULTY.max_depth;
   while (bot_depth > DIFFICULTY.min_depth && Math.random() < DIFFICULTY.dumb_chance) {
-    bot_depth -= 1;
+    bot_depth--;
   }
-  for (childIndex in node.children) {
-    var score = alphabeta(node.children[childIndex], bot_depth, node.diskCount % 2);
-    console.log(childIndex, score)
-    if (node.diskCount % 2 ? (score <= bestScore) : (score >= bestScore)) {
-      bestIndex = childIndex;
-      bestScore = score;
+  do {
+    var allSame = null;
+    for (childIndex in node.children) {
+      if (allSame === null) {allSame = true;}
+      var score = alphabeta(node.children[childIndex], bot_depth, node.diskCount % 2);
+      console.log(childIndex, score)
+      if (allSame === true && score != bestScore) {allSame = false;}
+      if (node.diskCount % 2 ? (score <= bestScore) : (score >= bestScore)) {
+        bestIndex = childIndex;
+        bestScore = score;
+      }
     }
-  }
+    bot_depth--
+  } while (allSame === true)
   console.log(bestIndex);
   node.board[bestIndex].push(node.diskCount % 2 ? p2 : p1);
-  return bestIndex
+  return bestIndex;
 }
 
 function update_screen (highlights = []) {
