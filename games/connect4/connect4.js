@@ -124,7 +124,7 @@ function bot_play_disk () {
   return bestIndex
 }
 
-function update_screen (highlights) {
+function update_screen (highlights = []) {
   /*var log = "";
   for (var y = node.height - 1; y >= 0; y--) {
     for (var x = 0; x < node.width; x++)
@@ -135,17 +135,17 @@ function update_screen (highlights) {
   document.getElementById("screen").textContent = log;*/
   function disp(item, element_class = null) {
     if (element_class === null) {
-      return {
+      return ({
         undefined: "<td class='nodisk'>-</td>",
         p1: "<td class='p1'>R</td>",
         p2: "<td class='p2'>Y</td>"
-      }[item];
+      }[item]);
     } else {
-      return {
+      return ({
         undefined: "<td class='nodisk "+element_class+"'>-</td>",
         p1: "<td class='p1 "+element_class+"'>R</td>",
         p2: "<td class='p2 "+element_class+"'>Y</td>"
-      }[item];
+      }[item]);
     }
   }
   var disabledtext = isdisabled ? "disabled" : "";
