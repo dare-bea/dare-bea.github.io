@@ -55,6 +55,7 @@ function run() {
     }
     stackl2 += " "
   }
+  document.getElementById('stack').textContent = stackl1 + "\n" + stackl2;
 }
 
 function reset () {
@@ -67,6 +68,7 @@ function reset () {
   STDOUT = "";
   document.getElementById('stdout').textContent = STDOUT;
   document.getElementById('status').textContent = `BSP: ${bsp}  SP: ${sp}  IP: ${i}`;
+  document.getElementById('stack').textContent = "";
 }
 
 /*
@@ -83,6 +85,17 @@ function doStep() {
   document.getElementById('stdin').textContent = STDIN;
   document.getElementById('stdout').textContent = STDOUT;
   document.getElementById('status').textContent = `BSP: ${bsp}  SP: ${sp}  IP: ${i}`;
+  var stackl1 = ""
+  var stackl2 = ""
+  for (var j = bsp; j < sp; j++) {
+    stackl1 += stack[j]+" "
+    stackl2 += String.fromCharCode(stack[j])
+    for (var _ = 0; _ < (stack[j].toString().length)-String.fromCharCode(stack[j]).length; _++) {
+      stackl2 += " "
+    }
+    stackl2 += " "
+  }
+  document.getElementById('stack').textContent = stackl1 + "\n" + stackl2;
 }
 
 function step() {
