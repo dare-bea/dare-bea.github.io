@@ -15,6 +15,7 @@
     <header id="header"></header>
     <h1>Esolang Interpreter</h1>
     <button onclick="run()">Run</button>
+    <input type=range id=speed min=0 max=1000 step=50/>
     <button onclick="doStep()">Step</button>
     <button onclick="reset()">Reset</button>
     <p>Status: <code id=status>BSP: 0  SP: 0  IP: 0</code></p>
@@ -22,9 +23,10 @@
     <textarea id=file rows=5 cols=100>(intPrint: bsc1-B1[d10%s10/d]xcb-[48+pcb-]B)
 (print: cb-[1~rpcb-]B)
 99,1[
-d{intPrint}bcB" bottle"1~rd1=!["s"]1r" of beer on the wall, "{print}
-d{intPrint}bcB" bottle"1~rd1=!["s"]1r" of beer.\nTake one down, pass it around, "{print}
-1-d{intPrint}bcB" bottle"1~rd1=!["s"]1r" of beer on the wall.\n"{print}d]x</textarea>
+d{intPrint}bcB" bottles of beer on the wall, "{print}
+d{intPrint}bcB" bottles of beer."10"Take one down, pass it around, "{print}
+1-d{intPrint}bcB" bottles of beer on the wall."10{print}
+d]</textarea>
     <h2>Input</h2>
     <textarea id=stdin rows=2 cols=100></textarea>
     <h2>Stack</h2>
