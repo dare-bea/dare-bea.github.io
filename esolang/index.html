@@ -8,7 +8,7 @@
     <link id="connect4" href="connect4.css" rel="stylesheet">
     <link id="theme" href="/css/light.css" rel="stylesheet">
     <link href="/favicon.png" rel="icon">
-    <title>Connect 4</title>
+    <title>Esolang Interpreter</title>
 </head>
 
 <body>
@@ -19,18 +19,18 @@
     <button onclick="reset()">Reset</button>
     <p>Status: <code id=status>BSP: 0  SP: 0  IP: 0</code></p>
     <h2>Code</h2>
-    <textarea id=file rows=10 cols=100>(intPrint: bsc1-B1[d10%s10/d]xcb-[48+pcb-]B)
+    <textarea id=file rows=5 cols=100>(intPrint: bsc1-B1[d10%s10/d]xcb-[48+pcb-]B)
 (print: cb-[1~rpcb-]B)
 99,1[
 d{intPrint}bcB" bottle"1~rd1=!["s"]1r" of beer on the wall, "{print}
 d{intPrint}bcB" bottle"1~rd1=!["s"]1r" of beer.\nTake one down, pass it around, "{print}
 1-d{intPrint}bcB" bottle"1~rd1=!["s"]1r" of beer on the wall.\n"{print}d]x</textarea>
     <h2>Input</h2>
-    <textarea id=stdin rows=10 cols=100></textarea>
+    <textarea id=stdin rows=2 cols=100></textarea>
     <h2>Stack</h2>
-    <textarea id=stack disabled rows=10 cols=100></textarea>
+    <textarea id=stack disabled rows=2 cols=100></textarea>
     <h2>Output</h2>
-    <textarea id=stdout disabled rows=10 cols=100></textarea>
+    <textarea id=stdout disabled rows=5 cols=100></textarea>
 </body>
 
 <script src="/theme.js"></script>
