@@ -34,7 +34,7 @@ var repeatID;
 function run() {
   // reset();
   document.getElementById('stdout').value = "Running...";
-  if (document.getElementById('speed').value) {
+  if (document.getElementById('speed').value > 0) {
     function nextStep () {
       if (i < FILE.length && !(STDIN.length === 0 && FILE[i] === 'i')) {
         doStep();
@@ -45,8 +45,9 @@ function run() {
     repeatID = setInterval(nextStep, document.getElementById('speed').value);
   } else {
     while (i < FILE.length && !(STDIN.length === 0 && FILE[i] === 'i')) {
-      doStep();
+      step();
     }
+    doStep();
   }
 }
 
@@ -73,7 +74,9 @@ for (var i = bsp; i < sp; i++) {
 
 function doStep() {
   STDIN = document.getElementById('stdin').value;
-  step();
+  if (i < FILE.length) {
+    step();
+  }
   document.getElementById('stdin').value = STDIN;
   document.getElementById('stdout').value = STDOUT;
   document.getElementById('status').textContent = `BSP: ${bsp}  SP: ${sp}  IP: ${i}`;
