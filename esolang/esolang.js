@@ -49,23 +49,24 @@ function run() {
     }
     repeatID = setInterval(nextStep, document.getElementById('speed').value);
   } else {
+    STDIN = document.getElementById('stdin').value;
     while (i < FILE.length && !(STDIN.length === 0 && FILE[i] === 'i')) {
       step();
     }
-  document.getElementById('stdin').value = STDIN;
-  document.getElementById('stdout').value = STDOUT;
-  document.getElementById('status').textContent = `BSP: ${bsp}  SP: ${sp}  IP: ${i}`;
-  var stackl1 = ""
-  var stackl2 = ""
-  for (var j = bsp; j < sp; j++) {
-    stackl1 += stack[j]+" "
-    stackl2 += String.fromCharCode(stack[j])
-    for (var _ = 0; _ < (stack[j].toString().length)-String.fromCharCode(stack[j]).length; _++) {
+    document.getElementById('stdin').value = STDIN;
+    document.getElementById('stdout').value = STDOUT;
+    document.getElementById('status').textContent = `BSP: ${bsp}  SP: ${sp}  IP: ${i}`;
+    var stackl1 = ""
+    var stackl2 = ""
+    for (var j = bsp; j < sp; j++) {
+      stackl1 += stack[j]+" "
+      stackl2 += String.fromCharCode(stack[j])
+      for (var _ = 0; _ < (stack[j].toString().length)-String.fromCharCode(stack[j]).length; _++) {
+        stackl2 += " "
+      }
       stackl2 += " "
     }
-    stackl2 += " "
-  }
-  document.getElementById('stack').value = stackl1 + "\n" + stackl2;
+    document.getElementById('stack').value = stackl1 + "\n" + stackl2;
   }
 }
 
