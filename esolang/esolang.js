@@ -34,16 +34,16 @@ function run() {
   var calls = [];
   var functions = {};
   bsp = 0; sp = 0; i = 0;
-  FILE = document.getElementById('file').textContent;
+  FILE = document.getElementById('file').value;
   STDOUT = "";
-  document.getElementById('stdout').textContent = "Running...";
+  document.getElementById('stdout').value = "Running...";
   try {
     while (i < FILE.length && !(STDIN.length === 0 && FILE[i] === 'i')) {
       step();
     }
   } catch (e) {console.error(e);}
-  document.getElementById('stdin').textContent = STDIN;
-  document.getElementById('stdout').textContent = STDOUT;
+  document.getElementById('stdin').value = STDIN;
+  document.getElementById('stdout').value = STDOUT;
   document.getElementById('status').textContent = `BSP: ${bsp}  SP: ${sp}  IP: ${i}`;
   var stackl1 = ""
   var stackl2 = ""
@@ -55,7 +55,7 @@ function run() {
     }
     stackl2 += " "
   }
-  document.getElementById('stack').textContent = stackl1 + "\n" + stackl2;
+  document.getElementById('stack').value = stackl1 + "\n" + stackl2;
 }
 
 function reset () {
@@ -63,12 +63,12 @@ function reset () {
   var calls = [];
   var functions = {};
   bsp = 0; sp = 0; i = 0;
-  FILE = document.getElementById('file').textContent;
-  STDIN = document.getElementById('stdin').textContent;
+  FILE = document.getElementById('file').value;
+  STDIN = document.getElementById('stdin').value;
   STDOUT = "";
-  document.getElementById('stdout').textContent = STDOUT;
+  document.getElementById('stdout').value = STDOUT;
   document.getElementById('status').textContent = `BSP: ${bsp}  SP: ${sp}  IP: ${i}`;
-  document.getElementById('stack').textContent = "";
+  document.getElementById('stack').value = "";
 }
 
 /*
@@ -80,10 +80,10 @@ for (var i = bsp; i < sp; i++) {
 */
 
 function doStep() {
-  STDIN = document.getElementById('stdin').textContent;
+  STDIN = document.getElementById('stdin').value;
   step();
-  document.getElementById('stdin').textContent = STDIN;
-  document.getElementById('stdout').textContent = STDOUT;
+  document.getElementById('stdin').value = STDIN;
+  document.getElementById('stdout').value = STDOUT;
   document.getElementById('status').textContent = `BSP: ${bsp}  SP: ${sp}  IP: ${i}`;
   var stackl1 = ""
   var stackl2 = ""
@@ -95,7 +95,7 @@ function doStep() {
     }
     stackl2 += " "
   }
-  document.getElementById('stack').textContent = stackl1 + "\n" + stackl2;
+  document.getElementById('stack').value = stackl1 + "\n" + stackl2;
 }
 
 function step() {
