@@ -38,7 +38,7 @@ function run() {
     repeatID = undefined;
   }
   document.getElementById('stdout').value = "Running...";
-  if (document.getElementById('speed').value > 0) {
+  if (document.getElementById('speed').value >= 0) {
     function nextStep () {
       if (i < FILE.length && !(STDIN.length === 0 && FILE[i] === 'i')) {
         doStep();
