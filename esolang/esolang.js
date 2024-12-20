@@ -33,6 +33,10 @@ var repeatID;
 
 function run() {
   // reset();
+  if (repeatID !== undefined) {
+    clearInterval(repeatID);
+    repeatID = undefined;
+  }
   document.getElementById('stdout').value = "Running...";
   if (document.getElementById('speed').value > 0) {
     function nextStep () {
@@ -40,6 +44,7 @@ function run() {
         doStep();
       } else {
         clearInterval(repeatID);
+        repeatID = undefined;
       }
     }
     repeatID = setInterval(nextStep, document.getElementById('speed').value);
