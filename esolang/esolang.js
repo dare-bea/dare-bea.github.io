@@ -6,12 +6,7 @@ var FILE = "";
 var STDIN = "";
 var STDOUT = "";
 
-FILE = `(intPrint: bsc1-B1[d10%s10/d]xcb-[48+pcb-]B)
-(print: cb-[1~rpcb-]B)
-99,1[
-d{intPrint}bcB" bottle"1~rd1=!["s"]1r" of beer on the wall, "{print}
-d{intPrint}bcB" bottle"1~rd1=!["s"]1r" of beer.\nTake one down, pass it around, "{print}
-1-d{intPrint}bcB" bottle"1~rd1=!["s"]1r" of beer on the wall.\n"{print}d1>]x`;
+FILE = ``;
 STDIN = ``;
 
 const escape_sequences = {
@@ -35,19 +30,33 @@ var sp = 0;
 var i;
 
 function run() {
+  var stack = {};
+  var calls = [];
+  var functions = {};
+  bsp = 0; sp = 0; i = 0;
+  FILE = document.getElementById('file').textContent;
   STDOUT = "";
+  document.getElementById('stdout').textContent = "Running...";
   try {
-    for (i = 0; i < FILE.length;) {
+    while (i < FILE.length && !(STDIN.length === 0 && FILE[i] === 'i')) {
       step();
     }
   } catch (e) {console.error(e);}
+  document.getElementById('stdin').textContent = STDIN;
   document.getElementById('stdout').textContent = STDOUT;
+  document.getElementById('status').textContent = `BSP: ${bsp}  SP: ${sp}  IP: ${i}`;
 }
 
 function reset () {
-  i = 0;
+  var stack = {};
+  var calls = [];
+  var functions = {};
+  bsp = 0; sp = 0; i = 0;
+  FILE = document.getElementById('file').textContent;
+  STDIN = document.getElementById('stdin').textContent;
   STDOUT = "";
   document.getElementById('stdout').textContent = STDOUT;
+  document.getElementById('status').textContent = `BSP: ${bsp}  SP: ${sp}  IP: ${i}`;
 }
 
 /*
@@ -57,6 +66,14 @@ for (var i = bsp; i < sp; i++) {
   console.log(i+": "+stack[i])
 }
 */
+
+function doStep() {
+  STDIN = document.getElementById('stdin').textContent;
+  step();
+  document.getElementById('stdin').textContent = STDIN;
+  document.getElementById('stdout').textContent = STDOUT;
+  document.getElementById('status').textContent = `BSP: ${bsp}  SP: ${sp}  IP: ${i}`;
+}
 
 function step() {
   while (i < FILE.length && FILE[i].match(/\s/)) {
@@ -83,6 +100,8 @@ function step() {
       if (STDIN.length) {
         stack[sp++] = STDIN.charCodeAt(0);
         STDIN = STDIN.substring(1);
+      } else {
+        i--;
       }
       break;
     case 'p':
