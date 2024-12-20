@@ -30,12 +30,7 @@ var sp = 0;
 var i = 0;
 
 function run() {
-  var stack = {};
-  var calls = [];
-  var functions = {};
-  bsp = 0; sp = 0; i = 0;
-  FILE = document.getElementById('file').value;
-  STDOUT = "";
+  reset();
   document.getElementById('stdout').value = "Running...";
   try {
     while (i < FILE.length && !(STDIN.length === 0 && FILE[i] === 'i')) {
@@ -59,9 +54,9 @@ function run() {
 }
 
 function reset () {
-  var stack = {};
-  var calls = [];
-  var functions = {};
+  stack = {};
+  calls = [];
+  functions = {};
   bsp = 0; sp = 0; i = 0;
   FILE = document.getElementById('file').value;
   STDIN = document.getElementById('stdin').value;
