@@ -29,17 +29,25 @@ var bsp = 0;
 var sp = 0;
 var i = 0;
 
+var repeatID;
+
 function run() {
-  reset();
+  // reset();
   document.getElementById('stdout').value = "Running...";
-  function nextStep () {
-    if (i < FILE.length && !(STDIN.length === 0 && FILE[i] === 'i')) {
+  if (document.getElementById('speed').value) {
+    function nextStep () {
+      if (i < FILE.length && !(STDIN.length === 0 && FILE[i] === 'i')) {
+        doStep();
+      } else {
+        clearInterval(repeatID);
+      }
+    }
+    repeatID = setInterval(nextStep, document.getElementById('speed').value);
+  } else {
+    while (i < FILE.length && !(STDIN.length === 0 && FILE[i] === 'i')) {
       doStep();
-    } else {
-      clearInterval(repeatID);
     }
   }
-  const repeatID = setInterval(nextStep, document.getElementById('speed').value);
 }
 
 function reset () {
