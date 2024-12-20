@@ -70,6 +70,8 @@ function run() {
 }
 
 function reset () {
+  clearInterval(repeatID);
+  repeatID = undefined;
   stack = {};
   calls = [];
   functions = {};
