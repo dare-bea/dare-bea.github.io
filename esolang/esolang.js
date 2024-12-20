@@ -27,7 +27,7 @@ var calls = [];
 var functions = {};
 var bsp = 0;
 var sp = 0;
-var i;
+var i = 0;
 
 function run() {
   var stack = {};
@@ -256,3 +256,5 @@ function step() {
   }
   i++;
 }
+
+reset();
