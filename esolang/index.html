@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link id="structure" href="/css/structure.css" rel="stylesheet">
+    <link id="connect4" href="connect4.css" rel="stylesheet">
+    <link id="theme" href="/css/light.css" rel="stylesheet">
+    <link href="/favicon.png" rel="icon">
+    <title>Connect 4</title>
+</head>
+
+<body>
+    <header id="header"></header>
+    <h1>Esolang Interpreter</h1>
+    <button onclick="run()">Run</button>
+    <button onclick="step()">Step</button>
+    <button onclick="reset()">Reset</button>
+    <h2>Code</h2>
+    <textarea id=file></textarea>
+    <h2>Input</h2>
+    <textarea id=stdin></textarea>
+    <h2>Output</h2>
+    <textarea id=stdout disabled></textarea>
+</body>
+
+<script src="/theme.js"></script>
+<script src="/nav.js"></script>
+<script src="esolang.js"></script>
+
+</html>
