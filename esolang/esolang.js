@@ -214,8 +214,9 @@ function step() {
       i++;
       while (FILE[i] !== '"') {
         if (FILE[i] === '\\') {
-          if (FILE[i+1] !== '\n') {
-            stack[sp++] = escapeSequences[FILE[++i]]
+          i++;
+          if (FILE[i] !== '\n') {
+            stack[sp++] = escapeSequences[FILE[i]]
           }
         } else {
           stack[sp++] = FILE.charCodeAt(i);
