@@ -362,8 +362,8 @@ function step() {
       STDOUT = "";
       break;
     case '?':
-      stack[sp-1] = randint(stack[sp-2], stack[sp-1]);
       sp--;
+      stack[sp-1] = randint(stack[sp-1], stack[sp]);
       break;
   }
   i++;
