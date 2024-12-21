@@ -15,23 +15,28 @@
     <header id="header"></header>
     <h1>Esolang Interpreter</h1>
     <button onclick="run()">Run</button>
-    <label for=speed>Speed: </label><input type=range id=speed name=speed min="-1" max="1000" value="-1"/>
+    <label for=speed>Speed: </label>
+    <input type=range id=speed name=speed min="0" max="250" value="0"/>
+    <label for=fastmode>Fast Mode:</label>
+    <input type="checkbox" id="fastmode" name="fastmode" checked/>
+    <br/>
+    <button onclick="stop()">Stop</button>
     <button onclick="doStep()">Step</button>
-    <button onclick="clearInterval(repeatID)">Stop</button>
     <button onclick="reset()">Reset</button>
-    <p>Status: <code id=status>BSP: 0  SP: 0  IP: 0</code></p>
+    <p>Status: <code id=status>Not Running</code></p>
+    <p>Registers: <code id=registers>BSP: 0  SP: 0  IP: 0</code></p>
     <h2>Code</h2>
     <textarea id=file rows=5 cols=100>(intPrint: bsc1-B1[d10%s10/d]xcb-[48+pcb-]B)
 (print: cb-[1~rpcb-]B)
 99,1[
-d{intPrint}bcB" bottles of beer on the wall, "{print}
-d{intPrint}bcB" bottles of beer."10"Take one down, pass it around, "{print}
-1-d{intPrint}bcB" bottles of beer on the wall."10{print}
-d]</textarea>
+d{intPrint}dbsc1-B" bottle"1~r1=!["s"0]" of beer on the wall, "{print}
+d{intPrint}dbsc1-B" bottle"1~r1=!["s"0]" of beer."10"Take one down, pass it around, "{print}
+1-d{intPrint}dbsc1-B" bottle"1~r1=!["s"0]" of beer on the wall."10{print}
+d]x</textarea>
     <h2>Input</h2>
     <textarea id=stdin rows=2 cols=100></textarea>
     <h2>Stack</h2>
-    <textarea id=stack disabled rows=2 cols=100></textarea>
+    <textarea id=stack disabled rows=3 cols=100></textarea>
     <h2>Output</h2>
     <textarea id=stdout disabled rows=5 cols=100></textarea>
 </body>
