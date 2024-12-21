@@ -12,7 +12,8 @@
 
 <body>
     <header id="header"></header>
-    <h1>Esolang Interpreter</h1>
+    <h1>WDIMT Interpreter</h1>
+    <br/>
     <button onclick="run()">Run</button>
     <label for=speed>Speed: </label>
     <input type=range id=speed name=speed min="0" max="250" value="0"/>
@@ -24,7 +25,12 @@
     <button onclick="reset()">Reset</button>
     <p>Status: <code id=status>Not Running</code></p>
     <p>Registers: <code id=registers>BSP: 0  SP: 0  IP: 0</code></p>
-    <h2>Code</h2>
+    <h2>Code</h2><input
+        type="file"
+        id="loadInput"
+        style="display:none" />
+    <button id="loadButton">Load</button>
+    <button onclick="download(document.getElementById('file').value, 'Untitled.wdimt', 'wdimt')">Save</button>
     <textarea id=file rows=5 cols=100>(intPrint: bsc1-B1[d10%s10/d]xcb-[48+pcb-]B)
 (print: cb-[1~rpcb-]B)
 99,1[

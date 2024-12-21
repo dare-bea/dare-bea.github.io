@@ -8,6 +8,49 @@ function randint(min, max) {
   return Math.floor(Math.random() * (maxFloored - minCeiled + 1) + minCeiled); // The maximum is inclusive and the minimum is inclusive
 }
 
+// Function to download data to a file
+function download(data, filename, type) {
+  var file = new Blob([data], {type: type});
+  if (window.navigator.msSaveOrOpenBlob) // IE10+
+    window.navigator.msSaveOrOpenBlob(file, filename);
+  else { // Others
+    var a = document.createElement("a"),
+            url = URL.createObjectURL(file);
+    a.href = url;
+    a.download = filename;
+    document.body.appendChild(a);
+    a.click();
+    setTimeout(function() {
+        document.body.removeChild(a);
+        window.URL.revokeObjectURL(url);  
+    }, 0); 
+  }
+}
+
+const loadInput = document.getElementById("loadInput");
+const loadButton = document.getElementById("loadButton");
+
+loadButton.addEventListener(
+  "click",
+  (e) => {
+    if (loadInput) {
+      loadInput.click();
+    }
+  },
+  false,
+);
+
+loadInput.addEventListener("change", load, false);
+function load() {
+  if (this.files.length) {
+    const file = this.files[0];
+    const reader = new FileReader();
+    reader.onload = (evt) => {
+      document.getElementById("file").value = evt.target.result;
+    };
+    reader.readAsText(file);
+  }
+}
 
 var FILE = "";
 var STDIN = "";
