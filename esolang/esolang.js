@@ -2,6 +2,13 @@ function mod(a, b) {
   return ((a % b) + b) % b;
 };
 
+function randint(min, max) {
+  const minCeiled = Math.ceil(min);
+  const maxFloored = Math.floor(max);
+  return Math.floor(Math.random() * (maxFloored - minCeiled + 1) + minCeiled); // The maximum is inclusive and the minimum is inclusive
+}
+
+
 var FILE = "";
 var STDIN = "";
 var STDOUT = "";
@@ -353,6 +360,10 @@ function step() {
       break;
     case 'z':
       STDOUT = "";
+      break;
+    case '?':
+      stack[sp-1] = randint(stack[sp-2], stack[sp-1]);
+      sp--;
       break;
   }
   i++;
