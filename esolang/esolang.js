@@ -358,4 +358,13 @@ function step() {
   i++;
 }
 
+async function copyOutput(text) {
+  try {
+    await navigator.clipboard.writeText(STDOUT);
+  } catch (error) {
+    console.error(error.message);
+  }
+}
+
 reset();
+run();
