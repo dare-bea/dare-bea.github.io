@@ -52,9 +52,22 @@ function load() {
   }
 }
 
+const stdinArea = document.getElementById("stdin");
+const stdinROEC = document.getElementById("resumeOnEnter");
+stdinArea.addEventListener("keyup", function (e) {
+  console.log(e, lastStepType);
+  if (e.key === "Enter"
+    && stdinROEC.checked
+    && lastStepType == "run"
+  ) {  //checks whether the pressed key is "Enter"
+    run();
+  }
+});
+
 var FILE = "";
 var STDIN = "";
 var STDOUT = "";
+var lastStepType = "none";
 
 FILE = ``;
 STDIN = ``;

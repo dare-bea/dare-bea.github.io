@@ -14,15 +14,15 @@
     <header id="header"></header>
     <h1>WDIMT Interpreter</h1>
     <br/>
-    <button onclick="run()">Run</button>
+    <button onclick="lastStepType='run';run()">Run</button>
     <label for=speed>Speed: </label>
     <input type=range id=speed name=speed min="0" max="250" value="0"/>
     <label for=fastmode>Fast Mode:</label>
     <input type="checkbox" id="fastmode" name="fastmode" checked/>
     <br/>
-    <button onclick="stop()">Stop</button>
-    <button onclick="doStep()">Step</button>
-    <button onclick="reset()">Reset</button>
+    <button onclick="lastStepType='none';stop()">Stop</button>
+    <button onclick="lastStepType='step';doStep()">Step</button>
+    <button onclick="lastStepType='none';reset()">Reset</button>
     <p>Status: <code id=status>Not Running</code></p>
     <p>Registers: <code id=registers>BSP: 0  SP: 0  IP: 0</code></p>
     <h2>Code</h2><input
@@ -31,6 +31,7 @@
         style="display:none" />
     <button id="loadButton">Load</button>
     <button onclick="download(document.getElementById('file').value, 'Untitled.wdimt', 'wdimt')">Save</button>
+    <br/>
     <textarea id=file rows=5 cols=100>(intPrint: bsc1-B1[d10%s10/d]xcb-[48+pcb-]B)
 (print: cb-[1~rpcb-]B)
 99,1[
@@ -39,6 +40,7 @@ d{intPrint}dbsc1-B" bottle"1~r1=!["s"0]" of beer."10"Take one down, pass it arou
 1-d{intPrint}dbsc1-B" bottle"1~r1=!["s"0]" of beer on the wall."10{print}
 d]x</textarea>
     <h2>Input</h2>
+    <input type="checkbox" name="resumeOnEnter" id="resumeOnEnter" checked><label for="resumeOnEnter" >Resume on Enter</label>
     <textarea id=stdin rows=2 cols=100></textarea>
     <h2>Stack</h2>
     <textarea id=stack disabled rows=3 cols=100></textarea>
