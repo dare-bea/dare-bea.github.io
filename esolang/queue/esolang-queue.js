@@ -131,9 +131,9 @@ function pressStep() {
   var queuel2 = "";
   for (var j = oqp; j < iqp; j++) {
     queuel1 += memory[j] + " ";
-    queuel2 += controlCharacters[memory[j]] ?? String.fromCharCode(memory[j]);
-    for (var _ = 0; _ < (memory[j].toString().length) - String.fromCharCode(
-        memory[j]).length; _++) {
+    queuel2 += controlCharacters[memory[j]] ?? String.fromCodePoint(Number(memory[j]));
+    for (var _ = 0; _ < (memory[j].toString().length) - String.fromCodePoint(
+        Number(memory[j])).length; _++) {
       queuel1 += " ";
     }
     queuel2 += " ";
