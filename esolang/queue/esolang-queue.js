@@ -362,9 +362,9 @@ function step () {
   }
 }
 
-async function copyOutput(text) {
+async function copyOutput() {
   try {
-    await navigator.clipboard.writeText(STDOUT);
+    await navigator.clipboard.writeText(stdout);
   } catch (error) {
     console.error(error.message);
   }
