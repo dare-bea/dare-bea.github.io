@@ -94,7 +94,6 @@ var oqp = 0;
 
 var repeatId;
 function pressRun () {
-  document.getElementById('status').value = "Run pressed!";
   if (program !== document.getElementById('program').value || pc >= program.length) {
     reset();
   }
@@ -103,18 +102,43 @@ function pressRun () {
     repeatId = undefined;
   }
   stdin = document.getElementById('stdin').value;
-  function nextStep() {
-    if (pc < program.length) {
-      pressStep();
-      repeatId = setTimeout(nextStep, 0);
-    } else {
-      repeatId = undefined;
+  
+  if (!document.getElementById('fastmode').checked) {
+    function nextStep() {
+      if (pc < program.length) {
+        pressStep();
+        repeatId = setTimeout(nextStep, document.getElementById('speed').value);
+      } else {
+        repeatId = undefined;
+      }
     }
+    nextStep();
+  } else {
+    while (i < program.length && !(stdin.length === 0 && program[pc] === 'i')) {
+      step();
+      }
+    document.getElementById('stdin').value = stdin;
+    document.getElementById('stdout').value = stdout;
+    document.getElementById('registers').textContent =
+      `OQP: ${oqp}  IQP: ${iqp}  PC: ${pc}`;
+    var queuel1 = "";
+    var queuel2 = "";
+    var char = "";
+    for (var j = oqp; j < iqp; j++) {
+      queuel1 += memory[j] + " ";
+      if (memory[j] < 0x110000) {
+        char = controlCharacters[memory[j]] ?? String.fromCodePoint(Number(memory[j]));
+      } else {
+        char = " ";
+      }
+      queuel2 += char;
+      for (var _ = 0; _ < (memory[j].toString().length) - char.length; _++) {
+        queuel1 += " ";
+      }
+      queuel2 += " ";
+    }
+    document.getElementById('queue').value = queuel1 + "\n" + queuel2;
   }
-  repeatId = setTimeout(nextStep, 0);
-  console.log(memory, iqp, oqp);
-  console.log(stdin);
-  console.log(stdout);
 }
 
 function pressStep() {
