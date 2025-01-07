@@ -7,7 +7,7 @@ var program = //"1[idd[p0r]]";
   32p61p32p
 ee
 rdr[2r*1r-dr]x 1r[d10r10/r%rds]xS[e48+pS]`;*/
-`1d[
+/*`1d[
   ds1r[d10r10/r%rds]xS1-[e48+pS1-]e
     32p98p111p116p116p108p101p115p32p111p102p32p98p101p101p114p
     32p111p110p32p116p104p101p32p119p97p108p108p44p10p
@@ -19,7 +19,9 @@ rdr[2r*1r-dr]x 1r[d10r10/r%rds]xS[e48+pS]`;*/
   1-ds1r[d10r10/r%rds]xS1-[e48+pS1-]e
     32p98p111p116p116p108p101p115p32p111p102p32p98p101p101p114p
     32p111p110p32p116p104p101p32p119p97p108p108p46p10p
-d]`;
+d]`;*/
+
+var lastStepType;
 
 function Int(value) {
   return BigInt.asUintN(bits, typeof value === "bigint" ? value : BigInt(value));
