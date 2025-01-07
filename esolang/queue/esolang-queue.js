@@ -115,21 +115,6 @@ function pressRun () {
   console.log(memory, iqp, oqp);
   console.log(stdin);
   console.log(stdout);
-  
-  document.getElementById('registers').textContent =
-    `OQP: ${oqp}  IQP: ${iqp}  PC: ${pc}`;
-  var stackl1 = ""
-  var stackl2 = ""
-  for (var j = oqp; j < iqp; j++) {
-    stackl1 += stack[j] + " "
-    stackl2 += controlCharacters[stack[j]] ?? String.fromCharCode(stack[j])
-    for (var _ = 0; _ < (stack[j].toString().length) - String.fromCharCode(
-        stack[j]).length; _++) {
-      stackl2 += " "
-    }
-    stackl2 += " "
-  }
-  document.getElementById('stack').value = stackl1 + "\n" + stackl2;
 }
 
 function pressStep() {
@@ -139,6 +124,21 @@ function pressStep() {
   }
   document.getElementById('stdin').value = stdin;
   document.getElementById('stdout').value = stdout;
+  
+  document.getElementById('registers').textContent =
+    `OQP: ${oqp}  IQP: ${iqp}  PC: ${pc}`;
+  var queuel1 = ""
+  var queuel2 = ""
+  for (var j = oqp; j < iqp; j++) {
+    queuel2 += memory[j] + " "
+    queuel2 += controlCharacters[memory[j]] ?? String.fromCharCode(memory[j])
+    for (var _ = 0; _ < (memory[j].toString().length) - String.fromCharCode(
+        memory[j]).length; _++) {
+      queuel2 += " "
+    }
+    queuel2 += " "
+  }
+  document.getElementById('queue').value = queuel2 + "\n" + queuel2;
 }
 
 function reset () {
