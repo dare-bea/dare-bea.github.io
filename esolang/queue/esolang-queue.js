@@ -175,7 +175,7 @@ function pressStep() {
     }
     queuel2 += char;
     for (var _ = 0; _ < (memory[j].toString().length) - char.length; _++) {
-      queuel1 += " ";
+      queuel2 += " ";
     }
     queuel2 += " ";
   }
