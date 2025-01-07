@@ -37,6 +37,7 @@ var oqp = 0;
 
 var repeatId;
 function pressRun () {
+  document.getElementById('status').value = "Run pressed!";
   if (program !== document.getElementById('program').value || i >= FILE.length) {
     reset();
   }
