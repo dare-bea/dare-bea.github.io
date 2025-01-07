@@ -75,6 +75,9 @@ function reset () {
   pc = 0;
   iqp = 0;
   oqp = 0;
+  program = document.getElementById('program').value;
+  stdin = document.getElementById('stdin').value;
+  document.getElementById('stdout').value = stdout;
 }
 
 function step () {
@@ -246,4 +249,5 @@ function step () {
 
 // for (k in memory) memory[k] = BigInt.asIntN(bits, memory[k])
 
+reset();
 pressRun();
