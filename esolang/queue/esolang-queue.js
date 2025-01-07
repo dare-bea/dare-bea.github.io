@@ -129,11 +129,16 @@ function pressStep() {
     `OQP: ${oqp}  IQP: ${iqp}  PC: ${pc}`;
   var queuel1 = "";
   var queuel2 = "";
+  var char = "";
   for (var j = oqp; j < iqp; j++) {
     queuel1 += memory[j] + " ";
-    queuel2 += controlCharacters[memory[j]] ?? String.fromCodePoint(Number(memory[j]));
-    for (var _ = 0; _ < (memory[j].toString().length) - String.fromCodePoint(
-        Number(memory[j])).length; _++) {
+    if (memory[j] < 0x110000) {
+      char = controlCharacters[memory[j]] ?? String.fromCodePoint(Number(memory[j]));
+    } else {
+      char = " ";
+    }
+    queuel2 += char;
+    for (var _ = 0; _ < (memory[j].toString().length) - char.length; _++) {
       queuel1 += " ";
     }
     queuel2 += " ";
