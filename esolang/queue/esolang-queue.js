@@ -114,9 +114,9 @@ function pressRun () {
     }
     nextStep();
   } else {
-    while (i < program.length && !(stdin.length === 0 && program[pc] === 'i')) {
+    while (pc < program.length && !(stdin.length === 0 && program[pc] === 'i')) {
       step();
-      }
+    }
     document.getElementById('stdin').value = stdin;
     document.getElementById('stdout').value = stdout;
     document.getElementById('registers').textContent =
@@ -168,6 +168,11 @@ function pressStep() {
     queuel2 += " ";
   }
   document.getElementById('queue').value = queuel1 + "\n" + queuel2;
+}
+
+function stop() {
+  clearTimeout(repeatID);
+  repeatID = undefined;
 }
 
 function reset () {
