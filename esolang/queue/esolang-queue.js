@@ -66,6 +66,18 @@ function load() {
   }
 }
 
+const stdinArea = document.getElementById("stdin");
+const stdinROEC = document.getElementById("resumeOnEnter");
+stdinArea.addEventListener("keyup", function (e) {
+  console.log(e, lastStepType);
+  if (e.key === "Enter"
+    && stdinROEC.checked
+    && lastStepType == "run"
+  ) {  //checks whether the pressed key is "Enter"
+    pressRun();
+  }
+});
+
 const controlCharacters = { 0x00: "␀", 0x01: "␁", 0x02: "␂", 0x03: "␃",
   0x04: "␄", 0x05: "␅", 0x06: "␆", 0x07: "␇", 0x08: "␈", 0x09: "␉", 0x0A: "␊",
   0x0B: "␋", 0x0C: "␌", 0x0D: "␍", 0x0E: "␎", 0x0F: "␏", 0x10: "␐", 0x11: "␑",
@@ -347,6 +359,14 @@ function step () {
         break;
     }
     pc++;
+  }
+}
+
+async function copyOutput(text) {
+  try {
+    await navigator.clipboard.writeText(STDOUT);
+  } catch (error) {
+    console.error(error.message);
   }
 }
 
