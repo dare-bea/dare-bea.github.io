@@ -22,7 +22,63 @@ rdr[2r*1r-dr]x 1r[d10r10/r%rds]xS[e48+pS]`;*/
     32p111p110p32p116p104p101p32p119p97p108p108p46p10p
 d]`;*/
 
-var lastStepType;
+// Function to download data to a file
+function download(data, filename, type) {
+  var file = new Blob([data], {type: type});
+  if (window.navigator.msSaveOrOpenBlob) // IE10+
+    window.navigator.msSaveOrOpenBlob(file, filename);
+  else { // Others
+    var a = document.createElement("a"),
+            url = URL.createObjectURL(file);
+    a.href = url;
+    a.download = filename;
+    document.body.appendChild(a);
+    a.click();
+    setTimeout(function() {
+        document.body.removeChild(a);
+        window.URL.revokeObjectURL(url);  
+    }, 0); 
+  }
+}
+
+const loadInput = document.getElementById("loadInput");
+const loadButton = document.getElementById("loadButton");
+
+loadButton.addEventListener(
+  "click",
+  (e) => {
+    if (loadInput) {
+      loadInput.click();
+    }
+  },
+  false,
+);
+
+loadInput.addEventListener("change", load, false);
+function load() {
+  if (this.files.length) {
+    const file = this.files[0];
+    const reader = new FileReader();
+    reader.onload = (evt) => {
+      document.getElementById("file").value = evt.target.result;
+    };
+    reader.readAsText(file);
+  }
+}
+
+const controlCharacters = { 0x00: "␀", 0x01: "␁", 0x02: "␂", 0x03: "␃",
+  0x04: "␄", 0x05: "␅", 0x06: "␆", 0x07: "␇", 0x08: "␈", 0x09: "␉", 0x0A: "␊",
+  0x0B: "␋", 0x0C: "␌", 0x0D: "␍", 0x0E: "␎", 0x0F: "␏", 0x10: "␐", 0x11: "␑",
+  0x12: "␒", 0x13: "␓", 0x14: "␔", 0x15: "␕", 0x16: "␖", 0x17: "␗", 0x18: "␘",
+  0x19: "␙", 0x1A: "␚", 0x1B: "␛", 0x1C: "␜", 0x1D: "␝", 0x1E: "␞", 0x1F: "␟",
+  0x80: "PAD", 0x81: "HOP", 0x82: "BPH", 0x83: "NBH", 0x84: "IND",
+  0x85: "NEL", 0x86: "SSA", 0x87: "ESA", 0x88: "HTS", 0x89: "HTJ",
+  0x8A: "VTS", 0x8B: "PLD", 0x8C: "PLU", 0x8D: "RI", 0x8E: "SS2", 0x8F: "SS3",
+  0x90: "DCS", 0x91: "PU1", 0x92: "PU2", 0x93: "STS", 0x94: "CCH", 0x95: "MW",
+  0x96: "SPA", 0x97: "EPA", 0x98: "SOS", 0x99: "SGCI", 0x9A: "SCI",
+  0x9B: "CSI", 0x9C: "ST", 0x9D: "OSC", 0x9E: "PM", 0x9F: "APC" };
+
+var lastStepType = "none";
 
 function Int(value) {
   return BigInt.asUintN(bits, typeof value === "bigint" ? value : BigInt(value));
@@ -59,6 +115,21 @@ function pressRun () {
   console.log(memory, iqp, oqp);
   console.log(stdin);
   console.log(stdout);
+  
+  document.getElementById('registers').textContent =
+    `OQP: ${oqp}  IQP: ${iqp}  PC: ${pc}`;
+  var stackl1 = ""
+  var stackl2 = ""
+  for (var j = oqp; j < iqp; j++) {
+    stackl1 += stack[j] + " "
+    stackl2 += controlCharacters[stack[j]] ?? String.fromCharCode(stack[j])
+    for (var _ = 0; _ < (stack[j].toString().length) - String.fromCharCode(
+        stack[j]).length; _++) {
+      stackl2 += " "
+    }
+    stackl2 += " "
+  }
+  document.getElementById('stack').value = stackl1 + "\n" + stackl2;
 }
 
 function pressStep() {
