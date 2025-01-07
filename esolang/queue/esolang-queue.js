@@ -39,7 +39,7 @@ var oqp = 0;
 var repeatId;
 function pressRun () {
   document.getElementById('status').value = "Run pressed!";
-  if (program !== document.getElementById('program').value || i >= FILE.length) {
+  if (program !== document.getElementById('program').value || pc >= program.length) {
     reset();
   }
   if (repeatId !== undefined) {
@@ -55,6 +55,7 @@ function pressRun () {
       repeatId = undefined;
     }
   }
+  repeatId = setTimeout(nextStep, 0);
   console.log(memory, iqp, oqp);
   console.log(stdin);
   console.log(stdout);
@@ -62,7 +63,7 @@ function pressRun () {
 
 function pressStep() {
   stdin = document.getElementById('stdin').value;
-  if (i < FILE.length) {
+  if (pc < program.length) {
     step();
   }
   document.getElementById('stdin').value = stdin;
