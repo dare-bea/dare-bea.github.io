@@ -127,18 +127,18 @@ function pressStep() {
   
   document.getElementById('registers').textContent =
     `OQP: ${oqp}  IQP: ${iqp}  PC: ${pc}`;
-  var queuel1 = ""
-  var queuel2 = ""
+  var queuel1 = "";
+  var queuel2 = "";
   for (var j = oqp; j < iqp; j++) {
-    queuel2 += memory[j] + " "
-    queuel2 += controlCharacters[memory[j]] ?? String.fromCharCode(memory[j])
+    queuel1 += memory[j] + " ";
+    queuel2 += controlCharacters[memory[j]] ?? String.fromCharCode(memory[j]);
     for (var _ = 0; _ < (memory[j].toString().length) - String.fromCharCode(
         memory[j]).length; _++) {
-      queuel2 += " "
+      queuel1 += " ";
     }
-    queuel2 += " "
+    queuel2 += " ";
   }
-  document.getElementById('queue').value = queuel2 + "\n" + queuel2;
+  document.getElementById('queue').value = queuel1 + "\n" + queuel2;
 }
 
 function reset () {
