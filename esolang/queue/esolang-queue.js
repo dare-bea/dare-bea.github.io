@@ -1,5 +1,6 @@
 var stdin = "";
-var program = //"1[idd[p0r]]";
+var program = "";
+//"1[idd[p0r]]";
 //"1[idds[1r[d10r10/r%rds]xS1-[e48+pS1-]112p0]e]";
 //"72p101p108p108p111p44p32p119p111p114p108p100p33p";
 /*`50p94p 1 63rd ss
