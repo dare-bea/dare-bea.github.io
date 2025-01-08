@@ -119,7 +119,6 @@ function pressRun () {
   if (!document.getElementById('fastmode').checked) {
     function nextStep() {
       if (pc < program.length) {
-        pressStep();
         stdin = document.getElementById('stdin').value;
         step();
         document.getElementById('stdout').value = stdout;
