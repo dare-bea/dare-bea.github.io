@@ -114,6 +114,7 @@ function pressRun () {
     repeatId = undefined;
   }
   stdin = document.getElementById('stdin').value;
+  document.getElementById('status').value = "Running";
   
   if (!document.getElementById('fastmode').checked) {
     function nextStep() {
@@ -122,12 +123,23 @@ function pressRun () {
         repeatId = setTimeout(nextStep, document.getElementById('speed').value);
       } else {
         repeatId = undefined;
+        var lastStepType = "none";
+        document.getElementById('status').value = "Not Running";
       }
     }
     nextStep();
   } else {
-    while (pc < program.length && !(stdin.length === 0 && program[pc] === 'i')) {
+    while (pc < program.length) {
       step();
+      if (stdin.length === 0 && program[pc] === 'i') {
+        break;
+      }
+    }
+    if (pc >= program.length) {
+      var lastStepType = "none";
+      document.getElementById('status').value = "Not Running";
+    } else {
+      document.getElementById('status').value = "Halted (Waiting for Input)";
     }
     document.getElementById('stdin').value = stdin;
     document.getElementById('stdout').value = stdout;
@@ -157,6 +169,10 @@ function pressStep() {
   stdin = document.getElementById('stdin').value;
   if (pc < program.length) {
     step();
+    document.getElementById('status').value = "Halted";
+  }
+  if (pc >= program.length) {
+    document.getElementById('status').value = "Not Running";
   }
   document.getElementById('stdin').value = stdin;
   document.getElementById('stdout').value = stdout;
@@ -183,6 +199,10 @@ function pressStep() {
 }
 
 function stop() {
+  document.getElementById('status').value = "Halted";
+  if (pc >= program.length) {
+    document.getElementById('status').value = "Not Running";
+  }
   clearTimeout(repeatID);
   repeatID = undefined;
 }
@@ -196,6 +216,7 @@ function reset () {
   program = document.getElementById('program').value;
   stdin = document.getElementById('stdin').value;
   document.getElementById('stdout').value = stdout;
+  document.getElementById('status').value = "Not Running";
 }
 
 function step () {
