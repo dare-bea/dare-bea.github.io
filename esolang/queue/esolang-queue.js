@@ -246,9 +246,9 @@ function step () {
       case "S":
         memory[iqp++] = Int(oqp);
         break;
-      case "Q":
+      /*case "Q":
         memory[iqp++] = Int(iqp);
-        break;
+        break;*/
       case "r":
         var value = memory[oqp] ?? 0n;
         for (var i = oqp + 1; i < iqp; i++) {
