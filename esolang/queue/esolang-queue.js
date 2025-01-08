@@ -286,6 +286,13 @@ function step () {
         }
         memory[iqp-1] = value;
         break;
+      case "u":
+        var value = memory[iqp - 1] ?? 0n;
+        for (var i = iqp - 1; i > oqp; i--) {
+          memory[i] = memory[i - 1] ?? 0n;
+        }
+        memory[oqp] = value;
+        break;
       case "d":
         var value = memory[oqp] ?? 0n;
         for (var i = oqp + 1; i < iqp; i++) {
