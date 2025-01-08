@@ -96,8 +96,11 @@ function Int(value) {
   return BigInt.asUintN(bits, typeof value === "bigint" ? value : BigInt(value));
 }
 
+Math.sum = (...values) => values.reduce((a, b) => a + b);
+
 const bits = 64;
 const memory = {};
+const maxIterations = 2000;
 
 var stdout = "";
 var pc = 0;
@@ -105,6 +108,7 @@ var iqp = 0;
 var oqp = 0;
 
 var repeatId = undefined;
+var repeats = [];
 function pressRun () {
   if (program !== document.getElementById('program').value || pc >= program.length) {
     reset();
@@ -151,7 +155,8 @@ function pressRun () {
     }
     nextStep();
   } else {
-    while (pc < program.length) {
+    repeats.length = 0;
+    while (pc < program.length && Math.sum(...repeats) < maxIterations) {
       step();
       if (stdin.length === 0 && program[pc] === 'i') {
         break;
@@ -301,6 +306,8 @@ function step () {
               : 0
             );
           }
+        } else {
+          repeats.push(0);
         }
         break;
       case "]":
@@ -318,6 +325,9 @@ function step () {
               : 0
             );
           }
+          repeats.push(repeats.pop()+1);
+        } else {
+          repeats.pop();
         }
         break;
       case "i":
