@@ -120,6 +120,28 @@ function pressRun () {
     function nextStep() {
       if (pc < program.length) {
         pressStep();
+        stdin = document.getElementById('stdin').value;
+        step();
+        document.getElementById('stdout').value = stdout;
+        document.getElementById('registers').textContent =
+          `OQP: ${oqp}  IQP: ${iqp}  PC: ${pc}`;
+        var queuel1 = "";
+        var queuel2 = "";
+        var char = "";
+        for (var j = oqp; j < iqp; j++) {
+          queuel1 += memory[j] + " ";
+          if (memory[j] < 0x110000) {
+            char = controlCharacters[memory[j]] ?? String.fromCodePoint(Number(memory[j]));
+          } else {
+            char = " ";
+          }
+          queuel2 += char;
+          for (var _ = 0; _ < (memory[j].toString().length) - char.length; _++) {
+            queuel2 += " ";
+          }
+          queuel2 += " ";
+        }
+        document.getElementById('queue').value = queuel1 + "\n" + queuel2;
         repeatId = setTimeout(nextStep, document.getElementById('speed').value);
       } else {
         repeatId = undefined;
