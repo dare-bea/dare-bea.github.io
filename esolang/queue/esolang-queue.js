@@ -104,7 +104,7 @@ var pc = 0;
 var iqp = 0;
 var oqp = 0;
 
-var repeatId;
+var repeatId = undefined;
 function pressRun () {
   if (program !== document.getElementById('program').value || pc >= program.length) {
     reset();
@@ -203,8 +203,10 @@ function stop() {
   if (pc >= program.length) {
     document.getElementById('status').innerHTML = "Not Running";
   }
-  clearTimeout(repeatID);
-  repeatID = undefined;
+  if (repeatId !== undefined) {
+    clearTimeout(repeatID);
+    repeatId = undefined;
+  }
 }
 
 function reset () {
