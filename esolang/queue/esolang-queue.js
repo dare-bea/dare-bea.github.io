@@ -362,6 +362,8 @@ function step () {
         } iqp--;
         memory[oqp] = Int(-(value < memory[oqp]));
         break;
+      case "?":
+        memory[oqp] = Int(Math.floor(Number(memory[oqp])*Math.random()))
       case "+":
         var value = memory[oqp] ?? 0n;
         for (var i = oqp + 1; i < iqp; i++) {
