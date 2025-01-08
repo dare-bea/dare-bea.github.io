@@ -224,7 +224,7 @@ function stop() {
   if (pc >= program.length) {
     document.getElementById('status').innerHTML = "Not Running";
   }
-  clearTimeout(repeatID);
+  clearTimeout(repeatId);
   repeatId = undefined;
 }
 
