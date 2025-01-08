@@ -114,7 +114,7 @@ function pressRun () {
     repeatId = undefined;
   }
   stdin = document.getElementById('stdin').value;
-  document.getElementById('status').value = "Running";
+  document.getElementById('status').innerHTML = "Running";
   
   if (!document.getElementById('fastmode').checked) {
     function nextStep() {
@@ -123,8 +123,8 @@ function pressRun () {
         repeatId = setTimeout(nextStep, document.getElementById('speed').value);
       } else {
         repeatId = undefined;
-        var lastStepType = "none";
-        document.getElementById('status').value = "Not Running";
+        lastStepType = "none";
+        document.getElementById('status').innerHTML = "Not Running";
       }
     }
     nextStep();
@@ -136,10 +136,10 @@ function pressRun () {
       }
     }
     if (pc >= program.length) {
-      var lastStepType = "none";
-      document.getElementById('status').value = "Not Running";
+      lastStepType = "none";
+      document.getElementById('status').innerHTML = "Not Running";
     } else {
-      document.getElementById('status').value = "Halted (Waiting for Input)";
+      document.getElementById('status').innerHTML = "Halted (Waiting for Input)";
     }
     document.getElementById('stdin').value = stdin;
     document.getElementById('stdout').value = stdout;
@@ -169,10 +169,10 @@ function pressStep() {
   stdin = document.getElementById('stdin').value;
   if (pc < program.length) {
     step();
-    document.getElementById('status').value = "Halted";
+    document.getElementById('status').innerHTML = "Halted";
   }
   if (pc >= program.length) {
-    document.getElementById('status').value = "Not Running";
+    document.getElementById('status').innerHTML = "Not Running";
   }
   document.getElementById('stdin').value = stdin;
   document.getElementById('stdout').value = stdout;
@@ -199,9 +199,9 @@ function pressStep() {
 }
 
 function stop() {
-  document.getElementById('status').value = "Halted";
+  document.getElementById('status').innerHTML = "Halted";
   if (pc >= program.length) {
-    document.getElementById('status').value = "Not Running";
+    document.getElementById('status').innerHTML = "Not Running";
   }
   clearTimeout(repeatID);
   repeatID = undefined;
@@ -216,7 +216,7 @@ function reset () {
   program = document.getElementById('program').value;
   stdin = document.getElementById('stdin').value;
   document.getElementById('stdout').value = stdout;
-  document.getElementById('status').value = "Not Running";
+  document.getElementById('status').innerHTML = "Not Running";
 }
 
 function step () {
@@ -246,9 +246,9 @@ function step () {
       case "S":
         memory[iqp++] = Int(oqp);
         break;
-      /*case "Q":
+      case "Q":
         memory[iqp++] = Int(iqp);
-        break;*/
+        break;
       case "r":
         var value = memory[oqp] ?? 0n;
         for (var i = oqp + 1; i < iqp; i++) {
