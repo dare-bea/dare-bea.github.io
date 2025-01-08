@@ -47,6 +47,7 @@ function load() {
     const reader = new FileReader();
     reader.onload = (evt) => {
       document.getElementById("file").value = evt.target.result;
+      document.getElementById("filename").value = file.name.replace(/\.[^.]+$/, "");
     };
     reader.readAsText(file);
   }
