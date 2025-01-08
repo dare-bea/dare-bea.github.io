@@ -96,8 +96,6 @@ function Int(value) {
   return BigInt.asUintN(bits, typeof value === "bigint" ? value : BigInt(value));
 }
 
-Math.sum = (...values) => values.reduce((a, b) => a + b);
-
 const bits = 64;
 const memory = {};
 const maxIterations = 2000;
@@ -156,7 +154,7 @@ function pressRun () {
     nextStep();
   } else {
     repeats.length = 0;
-    while (pc < program.length && Math.sum(...repeats) < maxIterations) {
+    while (pc < program.length && Math.max(...repeats) < maxIterations) {
       step();
       if (stdin.length === 0 && program[pc] === 'i') {
         break;
