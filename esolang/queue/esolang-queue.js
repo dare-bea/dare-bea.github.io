@@ -224,10 +224,8 @@ function stop() {
   if (pc >= program.length) {
     document.getElementById('status').innerHTML = "Not Running";
   }
-  if (repeatId !== undefined) {
-    clearTimeout(repeatID);
-    repeatId = undefined;
-  }
+  clearTimeout(repeatID);
+  repeatId = undefined;
 }
 
 function reset () {
