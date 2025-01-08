@@ -163,8 +163,10 @@ function pressRun () {
     if (pc >= program.length) {
       lastStepType = "none";
       document.getElementById('status').innerHTML = "Not Running";
-    } else {
+    } else if (stdin.length === 0 && program[pc] === 'i') {
       document.getElementById('status').innerHTML = "Halted (Waiting for Input)";
+    } else {
+      document.getElementById('status').innerHTML = "Halted (Infinite Loop)";
     }
     document.getElementById('stdin').value = stdin;
     document.getElementById('stdout').value = stdout;
@@ -242,6 +244,8 @@ function reset () {
   stdin = document.getElementById('stdin').value;
   document.getElementById('stdout').value = stdout;
   document.getElementById('status').innerHTML = "Not Running";
+  document.getElementById('registers').textContent =
+    `OQP: ${oqp}  IQP: ${iqp}  PC: ${pc}`;
 }
 
 function step () {
