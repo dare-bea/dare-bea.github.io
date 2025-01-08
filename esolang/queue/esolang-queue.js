@@ -154,7 +154,7 @@ function pressRun () {
     }
     nextStep();
   } else {
-    repeats.length = 0;
+    repeats = [];
     while (pc < program.length && Math.max(...repeats) < maxIterations) {
       step();
       if (stdin.length === 0 && program[pc] === 'i') {
@@ -335,7 +335,7 @@ function step () {
               : 0
             );
           }
-          repeats.push(repeats.pop()+1);
+          repeats[repeats.length-1] = repeats[repeats.length-1] + 1;
         } else {
           repeats.pop();
         }
@@ -364,6 +364,7 @@ function step () {
         break;
       case "?":
         memory[oqp] = Int(Math.floor(Number(memory[oqp])*Math.random()))
+        break;
       case "+":
         var value = memory[oqp] ?? 0n;
         for (var i = oqp + 1; i < iqp; i++) {
