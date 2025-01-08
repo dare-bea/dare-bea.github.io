@@ -121,6 +121,7 @@ function pressRun () {
       if (pc < program.length) {
         stdin = document.getElementById('stdin').value;
         step();
+        document.getElementById('stdin').value = stdin;
         document.getElementById('stdout').value = stdout;
         document.getElementById('registers').textContent =
           `OQP: ${oqp}  IQP: ${iqp}  PC: ${pc}`;
