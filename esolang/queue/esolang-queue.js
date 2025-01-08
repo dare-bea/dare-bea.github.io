@@ -188,6 +188,7 @@ function stop() {
 }
 
 function reset () {
+  stop();
   stdout = "";
   pc = 0;
   iqp = 0;
