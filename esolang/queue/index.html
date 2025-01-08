@@ -30,7 +30,10 @@
         id="loadInput"
         style="display:none" />
     <button id="loadButton">Load</button>
-    <button onclick="download(document.getElementById('program').value, 'Untitled.esoq', 'esoq')">Save</button>
+    <button onclick="download(document.getElementById('program').value, document.getElementById('filename').value+'.esoq', 'application/esoq')">Save</button>
+    <br/>
+    <label for="filename">Name: </label><input type=text id="filename" name="filename" />
+    <br/>
     <br/>
     <textarea id=program rows=5 cols=100>99d[
 ds1r[d10r10/r%rds]xS1-[e48+pS1-]
