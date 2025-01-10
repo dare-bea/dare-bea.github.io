@@ -150,6 +150,7 @@ function pressRun () {
         repeatId = undefined;
         if (program[pc] === '#') {
           document.getElementById('status').innerHTML = "Halted (Breakpoint)";
+          pc++;
         } else {
           lastStepType = "none";
           document.getElementById('status').innerHTML = "Not Running";
@@ -159,11 +160,10 @@ function pressRun () {
     nextStep();
   } else {
     repeats = [];
-    while (pc < program.length && Math.max(...repeats) < maxIterations && program[pc] !== '#') {
+    while (pc < program.length && Math.max(...repeats) < maxIterations) {
       step();
-      if (stdin.length === 0 && program[pc] === 'i') {
-        break;
-      }
+      if (stdin.length === 0 && program[pc] === 'i') break;
+      if (program[pc] === '#') break;
     }
     if (pc >= program.length) {
       lastStepType = "none";
