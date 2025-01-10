@@ -121,7 +121,7 @@ function pressRun () {
   
   if (!document.getElementById('fastmode').checked) {
     function nextStep() {
-      if (pc < program.length) {
+      if (pc < program.length && program[pc] !== '#') {
         stdin = document.getElementById('stdin').value;
         step();
         document.getElementById('stdin').value = stdin;
@@ -148,14 +148,18 @@ function pressRun () {
         repeatId = setTimeout(nextStep, document.getElementById('speed').value);
       } else {
         repeatId = undefined;
-        lastStepType = "none";
-        document.getElementById('status').innerHTML = "Not Running";
+        if (program[pc] === '#') {
+          document.getElementById('status').innerHTML = "Halted (Breakpoint)";
+        } else {
+          lastStepType = "none";
+          document.getElementById('status').innerHTML = "Not Running";
+        }
       }
     }
     nextStep();
   } else {
     repeats = [];
-    while (pc < program.length && Math.max(...repeats) < maxIterations) {
+    while (pc < program.length && Math.max(...repeats) < maxIterations && program[pc] !== '#') {
       step();
       if (stdin.length === 0 && program[pc] === 'i') {
         break;
@@ -166,6 +170,8 @@ function pressRun () {
       document.getElementById('status').innerHTML = "Not Running";
     } else if (stdin.length === 0 && program[pc] === 'i') {
       document.getElementById('status').innerHTML = "Halted (Waiting for Input)";
+    } else if (program[pc] === '#') {
+      document.getElementById('status').innerHTML = "Halted (Breakpoint)";
     } else {
       document.getElementById('status').innerHTML = "Halted (Infinite Loop)";
     }
