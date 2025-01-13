@@ -115,7 +115,7 @@ function bot_play_disk () {
     var allSame = null;
     for (childIndex in node.children) {
       if (allSame === null) {allSame = true;}
-      var score = alphabeta(node.children[childIndex], bot_depth, node.diskCount % 2);
+      var score = alphabeta(node.children[childIndex], bot_depth, DIFFICULTY.opposite ? !(node.diskCount % 2) : node.diskCount % 2);
       console.log(childIndex, score)
       if (allSame === true && score != bestScore) {allSame = false;}
       if (node.diskCount % 2 ? (score <= bestScore) : (score >= bestScore)) {
