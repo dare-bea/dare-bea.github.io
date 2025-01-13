@@ -106,7 +106,7 @@ function player_play_disk (column) {
 
 function bot_play_disk () {
   var bestIndex;
-  var bestScore = node.diskCount % 2 ? Infinity : -Infinity;
+  var bestScore = (DIFFICULTY.opposite ? !(node.diskCount % 2) : node.diskCount % 2) ? Infinity : -Infinity;
   var bot_depth = DIFFICULTY.max_depth;
   while (bot_depth > DIFFICULTY.min_depth && Math.random() < DIFFICULTY.dumb_chance) {
     bot_depth--;
@@ -118,7 +118,7 @@ function bot_play_disk () {
       var score = alphabeta(node.children[childIndex], bot_depth, DIFFICULTY.opposite ? !(node.diskCount % 2) : node.diskCount % 2);
       console.log(childIndex, score)
       if (allSame === true && score != bestScore) {allSame = false;}
-      if (node.diskCount % 2 ? (score <= bestScore) : (score >= bestScore)) {
+      if ((DIFFICULTY.opposite ? !(node.diskCount % 2) : node.diskCount % 2) ? (score <= bestScore) : (score >= bestScore)) {
         bestIndex = childIndex;
         bestScore = score;
       }
