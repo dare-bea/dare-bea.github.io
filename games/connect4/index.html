@@ -18,11 +18,12 @@
     <input type="checkbox" id="botfirst" name="botfirst"/>
     <label for="botfirst">Bot Goes First</label>
     <select id="difficulty" name="difficulty">
+        <option value='{"max_depth": 5, "min_depth": 3, "dumb_chance": 0.40, "scores": [0, 1, 4, 10, 500000], "opposite": true}'>Insane (trust)</option>
         <option value='{"max_depth": 3, "min_depth": 1, "dumb_chance": 0.70, "scores": [0, 1, 6, 30, 200]}'>Easy</option>
         <option value='{"max_depth": 4, "min_depth": 2, "dumb_chance": 0.40, "scores": [0, 1, 8, 35, 7000]}' selected>Normal</option>
         <option value='{"max_depth": 5, "min_depth": 3, "dumb_chance": 0.40, "scores": [0, 1, 4, 10, 10000]}'>Hard</option>
         <option value='{"max_depth": 5, "min_depth": 5, "dumb_chance": 0.00, "scores": [0, 1, 4, 10, 500000]}'>Very Hard</option>
-        <option value='{"max_depth": 6, "min_depth": 5, "dumb_chance": 0.50, "scores": [0, 1, 4, 10, 500000]}'>Impossible</option>
+        <!--<option value='{"max_depth": 6, "min_depth": 5, "dumb_chance": 0.50, "scores": [0, 1, 4, 10, 500000]}'>Impossible</option>-->
     </select>
     <label for="difficulty">Difficulty</label>
     <p id="difficulty-label">Vs. Normal Difficulty as Red</p>
