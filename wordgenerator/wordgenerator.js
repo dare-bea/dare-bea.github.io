@@ -1,12 +1,12 @@
 const maxFullRegens = 10;
 const maxPartialRegens = 10;
 
-let categories = {
-  C: "p*1.3/t*1.1/k/m*1.4/n*1.2/s*1.2/w*1.1/j/ts*0.8",
-  V: "a/e/i/o/u",
-  S: "CV",
-  E: "SE?",
-};
+let categories = [
+  ["C", "p*1.3/t*1.1/k/m*1.4/n*1.2/s*1.2/w*1.1/j/ts*0.8"],
+  ["V", "a/e/i/o/u"],
+  ["S", "CV"],
+  ["E", "SE?"],
+];
 let pattern = "V?SS?S?S??";
 let wordFilters = [
   [/^[aeiou]*$/g, "!"],
@@ -65,7 +65,7 @@ function product() {
 }
 
 function parsePattern (expression, categories, optionalWeight=0.5) {
-  categories = categories ?? {};
+  categories = Object.fromEntries(categories ?? []);
   const tree = new UnitNode([new SequenceNode([])]);
   for (var idx = 0; idx < expression.length; idx++) {
     const char = expression[idx];
@@ -169,7 +169,7 @@ function parsePattern (expression, categories, optionalWeight=0.5) {
 }
 
 function generateWordFromNode(node, categories) {
-  categories = categories ?? {};
+  categories = Object.fromEntries(categories ?? []);
   /*console.log(node.type + '['
               + (node.children?.map(x => x?.type).join()
               ?? node.child?.type ?? node.child) + ']');*/
@@ -216,7 +216,7 @@ function generateWordFromNode(node, categories) {
 }
 
 function generateAllWordsFromNode(node, categories) {
-  categories = categories ?? {};
+  categories = Object.fromEntries(categories ?? []);
   /*
   console.log(node.type + '['
               + (node.children?.map(x => x?.type).join()
