@@ -1,3 +1,5 @@
+const wordsOutput = document.getElementById("wordsOutput")
+
 document.getElementById("addCategoryButton")
 .addEventListener('click', (e) => {
   categories.push(["", ""]);
@@ -13,6 +15,15 @@ document.getElementById("addFilterButton")
 document.getElementById("patternInput")
 .addEventListener('input', (e) => {
   pattern = e.target.value;
+});
+
+
+document.getElementById("generateWords")
+.addEventListener('click', (e) => {
+  wordCount = document.getElementById("wordCount").value;
+  let words = generateWords(pattern, categories, wordFilters,
+                            wordCount, optionalWeight);
+  wordsOutput.innerText = words;
 });
 
 function updateScreen() {
