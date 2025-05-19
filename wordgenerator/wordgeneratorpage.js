@@ -10,6 +10,9 @@ document.getElementById("patternInput")
 });
 
 function updateScreen() {
+  const patternInput = document.getElementById("patternInput");
+  patternInput.value = pattern;
+  
   const catTable = document.getElementById("categories");
   
   // clear out any old rows
