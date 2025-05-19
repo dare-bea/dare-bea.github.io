@@ -18,12 +18,14 @@
     <table id="categories"></table>
     <button id="addCategoryButton">Add Subpattern</button>
     <div style="height: 1em;"></div>
-    <h3>Filters</h3>
-    <table>
-        <thead><tr><th>RegEx</th><th>Replacement</th></tr></thead>
-        <tbody id="filters"></tbody>
-    </table>
-    <button id="addFilterButton">Add Filter</button>
+    <details>
+        <summary><h3 style="display: inline;">Filters</h3></summary>
+        <table>
+            <thead><tr><th>RegEx</th><th>Replacement</th></tr></thead>
+            <tbody id="filters"></tbody>
+        </table>
+        <button id="addFilterButton">Add Filter</button>
+    </details>
     <div style="height: 1em;"></div>
     <label for="patternInput">Pattern: </label><input name="patternInput" id="patternInput">
     
