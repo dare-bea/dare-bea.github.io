@@ -65,7 +65,7 @@ function product() {
 }
 
 function parsePattern (expression, categories, optionalWeight=0.5) {
-  categories = Object.fromEntries(categories ?? []);
+  categories = categories ?? {};
   const tree = new UnitNode([new SequenceNode([])]);
   for (var idx = 0; idx < expression.length; idx++) {
     const char = expression[idx];
@@ -169,7 +169,7 @@ function parsePattern (expression, categories, optionalWeight=0.5) {
 }
 
 function generateWordFromNode(node, categories) {
-  categories = Object.fromEntries(categories ?? []);
+  categories = categories ?? {};
   /*console.log(node.type + '['
               + (node.children?.map(x => x?.type).join()
               ?? node.child?.type ?? node.child) + ']');*/
@@ -216,7 +216,7 @@ function generateWordFromNode(node, categories) {
 }
 
 function generateAllWordsFromNode(node, categories) {
-  categories = Object.fromEntries(categories ?? []);
+  categories = categories ?? {};
   /*
   console.log(node.type + '['
               + (node.children?.map(x => x?.type).join()
@@ -245,8 +245,9 @@ function generateAllWordsFromNode(node, categories) {
   }
 }
 
-function generateWords (pattern, categories, wordFilters,
+function generateWords (pattern, categoryList, wordFilters,
                         wordCount, optionalWeight) {
+  let categories = Object.fromEntries(categoryList);
   wordFilters = wordFilters ?? [];
   let ast = parsePattern(pattern, categories);
   let categoryTrees = Object.fromEntries(
@@ -318,7 +319,8 @@ function generateWords (pattern, categories, wordFilters,
   return words;
 }
 
-function generateAllWords(pattern, categories, wordFilters) {
+function generateAllWords(pattern, categoryList, wordFilters) {
+  let categories = Object.fromEntries(categoryList);
   wordFilters = wordFilters ?? [];
   let ast = parsePattern(pattern, categories);
   let categoryTrees = Object.fromEntries(
@@ -359,6 +361,8 @@ function generateAllWords(pattern, categories, wordFilters) {
 }
 
 // console.log(generateAllWords(pattern, categories, wordFilters));
+
+console.log();
 
 console.log(generateWords(pattern, categories, wordFilters,
                           wordCount, optionalWeight));
