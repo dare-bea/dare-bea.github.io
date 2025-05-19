@@ -4,6 +4,12 @@ document.getElementById("addCategoryButton")
   updateScreen();
 });
 
+document.getElementById("addFilterButton")
+.addEventListener('click', (e) => {
+  categories.push(["", ""]);
+  updateScreen();
+});
+
 document.getElementById("patternInput")
 .addEventListener('input', (e) => {
   pattern = e.target.value;
