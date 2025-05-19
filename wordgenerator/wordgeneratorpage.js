@@ -55,23 +55,51 @@ function updateScreen() {
     tdReplace.appendChild(replaceInput);
     tr.appendChild(tdReplace);
 
+    // --- up button ---
+    const tdUp = document.createElement("td");
+    const btnUp = document.createElement("button");
+    btnUp.type = "button";
+    btnUp.classList.add("moveButton");
+    btnUp.textContent = "↑";
+    btnUp.addEventListener('click', (e) => {
+      filters.splice(idx-1, 0, ...filters.splice(idx, 1));
+      updateScreen();
+    });
+    tdUp.appendChild(btnUp);
+    tr.appendChild(tdUp);
+
+    catTable.appendChild(tr);
+
+    // --- down button ---
+    const tdDown = document.createElement("td");
+    const btnDown = document.createElement("button");
+    btnDown.type = "button";
+    btnDown.classList.add("moveButton");
+    btnDown.textContent = "↓";
+    btnDown.addEventListener('click', (e) => {
+      filters.splice(idx+1, 0, ...filters.splice(idx, 1));
+      updateScreen();
+    });
+    tdDown.appendChild(btnDown);
+    tr.appendChild(tdDown);
+
+    catTable.appendChild(tr);
+
     // --- remove button ---
     const tdRemove = document.createElement("td");
-    const btn = document.createElement("button");
-    btn.type = "button";
-    btn.classList.add("removeButton");
-    btn.textContent = "X";
-    btn.addEventListener('click', (e) => {
+    const btnRemove = document.createElement("button");
+    btnRemove.type = "button";
+    btnRemove.classList.add("removeButton");
+    btnRemove.textContent = "X";
+    btnRemove.addEventListener('click', (e) => {
       filters.splice(idx, 1);
       updateScreen();
     });
-    tdRemove.appendChild(btn);
+    tdRemove.appendChild(btnRemove);
     tr.appendChild(tdRemove);
 
     catTable.appendChild(tr);
   });
-
-  
   
   const catTable = document.getElementById("categories");
   
