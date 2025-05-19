@@ -68,8 +68,6 @@ function updateScreen() {
     tdUp.appendChild(btnUp);
     tr.appendChild(tdUp);
 
-    catTable.appendChild(tr);
-
     // --- down button ---
     const tdDown = document.createElement("td");
     const btnDown = document.createElement("button");
@@ -82,8 +80,6 @@ function updateScreen() {
     });
     tdDown.appendChild(btnDown);
     tr.appendChild(tdDown);
-
-    catTable.appendChild(tr);
 
     // --- remove button ---
     const tdRemove = document.createElement("td");
@@ -98,7 +94,7 @@ function updateScreen() {
     tdRemove.appendChild(btnRemove);
     tr.appendChild(tdRemove);
 
-    catTable.appendChild(tr);
+    filTable.appendChild(tr);
   });
   
   const catTable = document.getElementById("categories");
