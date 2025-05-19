@@ -134,6 +134,7 @@ function updateScreen() {
     const tdPattern = document.createElement("td");
     const input = document.createElement("input");
     input.type = "text";
+    input.size = 50;
     input.classList.add("categoryPatternInput");
     input.value = pat; // DOM handles all escaping
     input.addEventListener('input', (e) => {
