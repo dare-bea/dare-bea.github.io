@@ -11,17 +11,30 @@
 </head>
 
 <body>
-    <header id="header"><noscript>Javascript is disabled. No nav-bar, and probably other functionality!</noscript></header>
+    <header id="header"><noscript>Javascript is disabled. No nav-bar, and probably other functionality!</noscript>
+    </header>
     <h1>Conlang Word Generator</h1>
-    
+    <p>
+        A small word generator I made. Still a WIP on the webpage itself
+        mostly but the <a
+            href="https://github.com/dare-bea/dare-bea.github.io/blob/main/wordgenerator/wordgenerator.js">
+            Javascript code behind it</a> is complete for the most part.
+    </p>
     <h3>Subpatterns</h3>
     <table id="categories"></table>
     <button id="addCategoryButton">Add Subpattern</button>
     <div style="height: 1em;"></div>
     <details>
-        <summary><h3 style="display: inline;">Filters</h3></summary>
+        <summary>
+            <h3 style="display: inline;">Filters</h3>
+        </summary>
         <table>
-            <thead><tr><th>RegEx</th><th>Replacement</th></tr></thead>
+            <thead>
+                <tr>
+                    <th>RegEx</th>
+                    <th>Replacement</th>
+                </tr>
+            </thead>
             <tbody id="filters"></tbody>
         </table>
         <button id="addFilterButton">Add Filter</button>
@@ -29,7 +42,7 @@
     <div style="height: 1em;"></div>
     <label for="patternInput">Pattern: </label><input id="patternInput">
     <div style="height: 2em;"></div>
-    
+
     <label for="wordCount">Word Count: </label><input type="number" id="wordCount" value="10">
     <div style="height: 1em;"></div>
     <button id="generateWords">Generate Words!</button>
