@@ -60,7 +60,7 @@ function updateScreen() {
     const btnUp = document.createElement("button");
     btnUp.type = "button";
     btnUp.classList.add("moveButton");
-    btnUp.textContent = "↑";
+    btnUp.textContent = "\u2191";
     btnUp.addEventListener('click', (e) => {
       wordFilters.splice(idx-1, 0, ...wordFilters.splice(idx, 1));
       updateScreen();
@@ -73,7 +73,7 @@ function updateScreen() {
     const btnDown = document.createElement("button");
     btnDown.type = "button";
     btnDown.classList.add("moveButton");
-    btnDown.textContent = "↓";
+    btnDown.textContent = "\u2193";
     btnDown.addEventListener('click', (e) => {
       wordFilters.splice(idx+1, 0, ...wordFilters.splice(idx, 1));
       updateScreen();
