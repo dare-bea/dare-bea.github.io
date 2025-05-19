@@ -27,7 +27,7 @@ function updateScreen() {
   }
 
   // rebuild the table
-  filters.forEach(([fil, rep], idx) => {
+  wordFilters.forEach(([fil, rep], idx) => {
     // create row and cells
     const tr = document.createElement("tr");
 
@@ -38,7 +38,7 @@ function updateScreen() {
     regexInput.classList.add("filterRegexInput");
     regexInput.value = fil.source; // DOM handles all escaping
     regexInput.addEventListener('input', (e) => {
-      filters[idx][0] = new RegExp(e.target.value, "g");
+      wordFilters[idx][0] = new RegExp(e.target.value, "g");
     });
     tdRegex.appendChild(regexInput);
     tr.appendChild(tdRegex);
@@ -50,7 +50,7 @@ function updateScreen() {
     replaceInput.classList.add("filterReplaceInput");
     replaceInput.value = rep; // DOM handles all escaping
     replaceInput.addEventListener('input', (e) => {
-      filters[idx][1] = e.target.value;
+      wordFilters[idx][1] = e.target.value;
     });
     tdReplace.appendChild(replaceInput);
     tr.appendChild(tdReplace);
@@ -62,7 +62,7 @@ function updateScreen() {
     btnUp.classList.add("moveButton");
     btnUp.textContent = "↑";
     btnUp.addEventListener('click', (e) => {
-      filters.splice(idx-1, 0, ...filters.splice(idx, 1));
+      wordFilters.splice(idx-1, 0, ...wordFilters.splice(idx, 1));
       updateScreen();
     });
     tdUp.appendChild(btnUp);
@@ -77,7 +77,7 @@ function updateScreen() {
     btnDown.classList.add("moveButton");
     btnDown.textContent = "↓";
     btnDown.addEventListener('click', (e) => {
-      filters.splice(idx+1, 0, ...filters.splice(idx, 1));
+      wordFilters.splice(idx+1, 0, ...wordFilters.splice(idx, 1));
       updateScreen();
     });
     tdDown.appendChild(btnDown);
@@ -92,7 +92,7 @@ function updateScreen() {
     btnRemove.classList.add("removeButton");
     btnRemove.textContent = "X";
     btnRemove.addEventListener('click', (e) => {
-      filters.splice(idx, 1);
+      wordFilters.splice(idx, 1);
       updateScreen();
     });
     tdRemove.appendChild(btnRemove);
