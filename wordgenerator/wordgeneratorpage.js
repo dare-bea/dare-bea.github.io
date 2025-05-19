@@ -23,7 +23,7 @@ document.getElementById("generateWords")
   wordCount = document.getElementById("wordCount").value;
   let words = generateWords(pattern, categories, wordFilters,
                             wordCount, optionalWeight);
-  wordsOutput.innerText = words;
+  wordsOutput.innerText = words.join(" ");
 });
 
 function updateScreen() {
