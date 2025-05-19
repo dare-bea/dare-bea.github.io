@@ -1,4 +1,5 @@
-const wordsOutput = document.getElementById("wordsOutput")
+const wordsOutput = document.getElementById("wordsOutput");
+const outputDetails = document.getElementById("outputDetails");
 
 document.getElementById("addCategoryButton")
 .addEventListener('click', (e) => {
@@ -24,6 +25,15 @@ document.getElementById("generateWords")
   let words = generateWords(pattern, categories, wordFilters,
                             wordCount, optionalWeight);
   wordsOutput.innerText = words.join(" ");
+  outputDetails.innerText =
+    (words.length === 0)
+    ? `No words generated.`
+    : (words.length === 1)
+    ? `Generated 1 word!`
+    : `Generated ${words.length} words!`;
+  if (wordCount > words.length) {
+    outputDetails.innerText += ` (${wordCount-words.length} rejected)`;
+  }
 });
 
 function updateScreen() {
