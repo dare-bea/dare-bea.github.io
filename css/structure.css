@@ -1,14 +1,14 @@
 html {
     background-color: var(--theme_bg);
     color: var(--theme_fg);
-  transition: background-color 0.3s, color 0.3s, font-family 0.3s;
-  font-size: max(12pt, 1.6vh);
+    transition: background-color 0.3s, color 0.3s, font-family 0.3s;
+    font-size: max(12pt, 1.6vh);
 }
 
 img {
-  max-width: 96%;
-  min-height: 200px;
-  max-height: 80vh;
+    max-width: 96%;
+    min-height: 200px;
+    max-height: 80vh;
 }
 
 *.interact, button, select {
@@ -90,6 +90,7 @@ ul.nav-bar li ul {
     border-radius: 0.4em;
     background-color: var(--theme_bg);
     border: 1px solid;
+    transition: display 0.3s;
 }
 
 ul.nav-bar li ul li{
