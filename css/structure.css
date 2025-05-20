@@ -83,6 +83,8 @@ ul.nav-bar li ul {
 }
 
 ul.nav-bar li:hover ul {
+    border-radius: 0.4em;
+    background-color: white;
     display: block;
 }
 
