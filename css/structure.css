@@ -75,6 +75,8 @@ ul.nav-bar li :is(*.interact, a, button, select):hover {
 ul.nav-bar li :is(*.interact, a, button, select):has(~ ul)::after {
     display: inline;
     content: " ⯆";
+    padding: 0;
+    margin: 0;
 }
 
 ul.nav-bar li ul {
