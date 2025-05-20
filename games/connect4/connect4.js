@@ -123,8 +123,8 @@ function bot_play_disk () {
         bestScore = score;
       }
     }
-    bot_depth--
-  } while (allSame === true && bot_depth > 0)
+    bot_depth--;
+  } while (allSame === true && bot_depth >= 0)
   console.log(bestIndex);
   node.board[bestIndex].push(node.diskCount % 2 ? p2 : p1);
   return bestIndex;
