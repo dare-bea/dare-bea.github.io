@@ -40,7 +40,6 @@ ul.nav-bar {
 
 ul.nav-bar li {
     margin: auto 0;
-    height: 100%;
 }
 
 ul.nav-bar li.push {
@@ -53,6 +52,7 @@ ul.nav-bar li>* {
 }
 
 ul.nav-bar li :is(h1, h2, h3, h4, h5, h6) {
+    font-size: max(15pt, 2.0vh);
     margin-right: 1em;
 }
 
