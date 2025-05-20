@@ -84,7 +84,7 @@ ul.nav-bar li ul {
     display: none;
     border-radius: 0.4em;
     background-color: var(--theme_bg);
-    border: 1px solid #888;
+    border: 1px solid;
 }
 
 ul.nav-bar li ul li{

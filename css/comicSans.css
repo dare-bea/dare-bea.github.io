@@ -69,6 +69,7 @@ ul.nav-bar li :is(*.interact, a, button, select):active {
 
 ul.nav-bar li ul {
     background-color: #dcdcdc;
+    border-color: #ccc;
 }
 
 /* Collections */
