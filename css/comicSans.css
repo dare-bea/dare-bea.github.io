@@ -67,6 +67,10 @@ ul.nav-bar li :is(*.interact, a, button, select):active {
     background-color: #eee;
 }
 
+ul.nav-bar li ul {
+    background-color: #fafafa;
+}
+
 /* Collections */
 
 .card {
