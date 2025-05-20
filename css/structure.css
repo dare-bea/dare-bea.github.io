@@ -69,6 +69,10 @@ ul.nav-bar li :is(*.interact, a, button, select):hover {
     cursor: pointer;
 }
 
+ul.nav-bar li :is(*.interact, a, button, select):hover:has(~ ul)::after {
+    content: "⯆";
+}
+
 ul.nav-bar li ul {
     position: absolute;
     z-index: 1;
