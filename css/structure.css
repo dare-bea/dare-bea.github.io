@@ -78,7 +78,7 @@ ul.nav-bar li ul {
     display: none;
 }
 
-ul.nav-bar li :is(*.interact, a, button, select):hover ~ ul {
+ul.nav-bar li:hover ul {
     display: block;
 }
 
