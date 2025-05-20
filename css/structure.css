@@ -53,6 +53,10 @@ ul.nav-bar li>* {
     font-size: max(12pt, 1.6vh);
 }
 
+ul.nav-bar li > :not(*.interact, a, button, select):first-child {
+    margin-right: 1em;
+}
+
 ul.nav-bar li :is(*.interact, a, button, select) {
     padding: 0.6em 0.8em;
     border-radius: 0.4em;
@@ -71,7 +75,7 @@ ul.nav-bar li :is(*.interact, a, button, select):hover {
 
 ul.nav-bar li :is(*.interact, a, button, select):has(~ ul)::after {
     content: "⯆";
-    margin-left: 0.5em;
+    padding-left: 0.5em;
 }
 
 ul.nav-bar li ul {
