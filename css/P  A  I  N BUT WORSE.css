@@ -80,7 +80,8 @@ ul.nav-bar li :is(a, *.interact, button, select):active {
 }
 
 ul.nav-bar li ul {
-    background-color: #422;
+    background-color: #600;
+    border-color: #a33;
 }
 
 /* Collections */
