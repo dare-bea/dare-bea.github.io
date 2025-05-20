@@ -19,14 +19,12 @@ img {
     transition: transform 0.3s, background-color 0.3s;
 }
 
-:is(*.interact:hover,
-button:hover,
-select:hover):not(*:disabled) {
+:is(*.interact, button, select):hover:not(*:disabled) {
     cursor: pointer;
     transform: translateY(-3px);
 }
 
-*.interact:active, button:active, select:active {
+:is(*.interact, button, select):active {
     padding-top: 0.5em;
     margin-top: 0.1em;
 }
@@ -42,6 +40,7 @@ ul.nav-bar {
 
 ul.nav-bar li {
     margin: auto 0;
+    height: auto;
 }
 
 ul.nav-bar li.push {
