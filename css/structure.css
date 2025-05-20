@@ -53,7 +53,7 @@ ul.nav-bar li>* {
     font-size: max(12pt, 1.6vh);
 }
 
-ul.nav-bar li > :not(*.interact, a, button, select):first-child {
+ul.nav-bar li :is(h1, h2, h3, h4, h5, h6) {
     margin-right: 1em;
 }
 
@@ -91,7 +91,7 @@ ul.nav-bar li ul {
 }
 
 ul.nav-bar li ul li{
-    min-width: 2em;
+    min-width: 10em;
     padding: 0.1em;
 }
 
