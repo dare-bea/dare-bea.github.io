@@ -33,6 +33,13 @@ select:hover):not(*:disabled) {
 
 /* Top-Nav */
 
+ul.nav-bar {
+    list-style-type: none;
+    margin: 0;
+    padding: 0.4em 0.2em;
+    display: flex;
+}
+
 ul.nav-bar li {
     margin: auto 0;
 }
@@ -62,11 +69,17 @@ ul.nav-bar li :is(*.interact, a, button, select):hover {
     cursor: pointer;
 }
 
-ul.nav-bar, ul.nav-bar li ul {
+ul.nav-bar li ul {
+    position: absolute;
+    z-index: 1;
     list-style-type: none;
     margin: 0;
     padding: 0.4em 0.2em;
-    display: flex;
+    display: none;
+}
+
+ul.nav-bar li :is(*.interact, a, button, select):hover ul {
+    display: block;
 }
 
 /* Collections */
