@@ -22,8 +22,13 @@ document.getElementById("patternInput")
 document.getElementById("generateWords")
 .addEventListener('click', (e) => {
   wordCount = document.getElementById("wordCount").value;
-  let words = generateWords(pattern, categories, wordFilters,
-                            wordCount, optionalWeight);
+  let words;
+  if (wordCount == 0) {
+    words = generateAllWords(pattern, categories, wordFilters)
+  } else {
+    words = generateWords(pattern, categories, wordFilters,
+                          wordCount, optionalWeight);
+  }
   wordsOutput.innerText = words.join(" ");
   outputDetails.innerText =
     (words.length === 0)
