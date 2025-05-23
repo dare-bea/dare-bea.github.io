@@ -9,7 +9,7 @@ document.getElementById("addCategoryButton")
 
 document.getElementById("addFilterButton")
 .addEventListener('click', (e) => {
-  categories.push(["", ""]);
+  wordFilters.push([new RegExp("", "g"), ""]);
   updateScreen();
 });
 
@@ -20,11 +20,11 @@ document.getElementById("patternInput")
 
 
 document.getElementById("generateWords")
-.addEventListener('click', (e) => {
+.addEventListener('click', () => {
   wordCount = document.getElementById("wordCount").value;
   let words;
   if (wordCount == 0) {
-    words = generateAllWords(pattern, categories, wordFilters)
+    words = generateAllWords(pattern, categories, wordFilters);
   } else {
     words = generateWords(pattern, categories, wordFilters,
                           wordCount, optionalWeight);
