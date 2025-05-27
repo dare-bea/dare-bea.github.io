@@ -5,7 +5,7 @@ function toJSON () {
   return JSON.stringify({
     categories,
     wordCount,
-    optionalWeight
+    optionalWeight,
     wordFilters: wordFilters.map(([regexp, replacement]) => [regexp.source, replacement]),
     pattern
   });
@@ -20,7 +20,7 @@ function fromJSON (json) {
   pattern = data.pattern;
 }
 
-/*function download(data) {
+function download(data) {
   var file = new Blob([data], {type: "application/json"});
   if (window.navigator.msSaveOrOpenBlob) // IE10+
     window.navigator.msSaveOrOpenBlob(file, "Word Generation Pattern.wordgen");
@@ -61,7 +61,7 @@ function load() {
     };
     reader.readAsText(file);
   }
-}*/
+}
 
 document.getElementById("clearAllButton")
 .addEventListener('click', () => {
