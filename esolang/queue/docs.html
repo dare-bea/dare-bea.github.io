@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link id="structure" href="/css/structure.css" rel="stylesheet">
+    <link id="theme" href="/css/light.css" rel="stylesheet">
+    <link href="/favicon.png" rel="icon">
+    <title>Queue Esolang Interpreter Documentation</title>
+</head>
+
+<body>
+    <header id="header"></header>
+    <nav><a href="./">Queue Esolang Interpreter</a></nav>
+    <h1>Queue Esolang Interpreter Docs</h1>
+    <h2>Instructions</h2>
+    <h3>Queue Interaction</h3>
+    <p>Integer: Push a constant value.</p>
+    <p><code>x</code>: Discard a value from the front of the queue.</p>
+    <p><code>d</code>: Duplicate the front of the queue (Pushes both copies to back)</p>
+    <p><code>r</code>: Rotate queue (front &rightarrow; back)</p>
+    <p><code>u</code>: Unrotate queue (back &rightarrow; front)</p>
+    <h3>Stack Interaction</h3>
+    <p><code>s</code>: Store the front of the queue to the stack.</p>
+    <p><code>e</code>: Restore from the stack onto the front of the queue.</p>
+    <h3>Length Querying</h3>
+    <p><code>S</code>: Push the length of the stack.</p>
+    <p><code>Q</code>: Push the length of the queue, after pushing.</p>
+    <h3>Iteration</h3>
+    <p><code>[</code>: Pop, jump to next matching <code>]</code> if zero.</p>
+    <p><code>]</code>: Pop, jump to previous matching <code>[</code> if non-zero.</p>
+    <h3>Input/Output</h3>
+    <p><code>i</code>: Push one character from input to queue. Pushes 0 if no input.</p>
+    <p><code>p</code>: Pop and print to output.</p>
+    <h3>Binary Operations</h3>
+    <p>All binary operations pop the two front values and push the result to the front of the queue</p>
+    <p><code>l</code>: Front lower than next, -1 if true, 0 if false.</p>
+    <p><code>+</code>: Addition, front + next.</p>
+    <p><code>-</code>: Subtraction, front - next.</p>
+    <p><code>*</code>: Multiplication, front - next.</p>
+    <p><code>/</code>: Division, front - next.</p>
+    <p><code>%</code>: Modulo, front - next.</p>
+    <p><code>&</code>: Bitwise AND, front - next.</p>
+    <p><code>|</code>: Bitwise OR, front - next.</p>
+    <p><code>^</code>: Bitwise XOR, front - next.</p>
+    <h3>Unary Operations</h3>
+    <p>All unary operations replace the front of the queue.</p>
+    <p><code>?</code>: Random integer less than value</p>
+    <p><code>~</code>: Negation.</p>
+    <p><code>!</code>: Bitwise NOT.</p>
+</body>
+
+<script src="/theme.js"></script>
+<script src="/nav.js"></script>
+
+</html>
