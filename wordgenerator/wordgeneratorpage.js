@@ -1,6 +1,14 @@
 const wordsOutput = document.getElementById("wordsOutput");
 const outputDetails = document.getElementById("outputDetails");
 
+document.getElementById("clearAllButton")
+.addEventListener('click', (e) => {
+  categories = [["C", ""], ["V", ""]];
+  wordFilters = [];
+  pattern = "";
+  updateScreen();
+});
+
 document.getElementById("addCategoryButton")
 .addEventListener('click', (e) => {
   categories.push(["", ""]);
