@@ -21,10 +21,12 @@
             Javascript code behind it</a> is complete for the most part.
     </p>
     <button id="clearAllButton">Clear All Fields</button>
-    <button id="saveBtn">Save Data</button>
-    <button id="loadBtn">Load Data</button>
-    <input type="file" id="fileInput" accept=".json" style="display:none">
-
+    <button onclick="download(toJSON())">Save Pattern</button>
+    <input
+        type="file"
+        id="loadInput"
+        style="display:none" />
+    <button id="loadButton">Load Pattern</button>
     <h3>Subpatterns</h3>
     <table id="categories"></table>
     <button id="addCategoryButton">Add Subpattern</button>

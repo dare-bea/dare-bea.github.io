@@ -20,32 +20,48 @@ function fromJSON (json) {
   pattern = data.pattern;
 }
 
-// — SAVE —
-// (uses the “classic” download + file picker approach)
-document.getElementById('saveBtn').addEventListener('click', () => {
-  // 1. get your JSON string directly
-  const jsonStr = toJSON();
+function download(data) {
+  var file = new Blob([data], {type: "application/json"});
+  if (window.navigator.msSaveOrOpenBlob) // IE10+
+    window.navigator.msSaveOrOpenBlob(file, "Word Generation Pattern.wordgen");
+  else { // Others
+    var a = document.createElement("a"),
+            url = URL.createObjectURL(file);
+    a.href = url;
+    a.download = filename;
+    document.body.appendChild(a);
+    a.click();
+    setTimeout(function() {
+        document.body.removeChild(a);
+        window.URL.revokeObjectURL(url);  
+    }, 0); 
+  }
+}
 
-  // 2. package it in a blob
-  const blob = new Blob([jsonStr], { type: 'application/json' });
+const loadInput = document.getElementById("loadInput");
+const loadButton = document.getElementById("loadButton");
 
-  // 3. kick off the browser “Save As…” dialog
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement('a');
-  a.href = url;
-  a.download = 'pattern.wordgen.json';  // default filename
-  document.body.appendChild(a);
-  a.click();
-  a.remove();
-  URL.revokeObjectURL(url);
-});
+loadButton.addEventListener(
+  "click",
+  (e) => {
+    if (loadInput) {
+      loadInput.click();
+    }
+  },
+  false,
+);
 
-// — LOAD —
-const fileInput = document.getElementById('fileInput');
-document.getElementById('loadBtn').addEventListener('click', () => {
-  fileInput.value = '';   // allow reloading the same file
-  fileInput.click();      // open the OS file picker
-});
+loadInput.addEventListener("change", load, false);
+function load() {
+  if (this.files.length) {
+    const file = this.files[0];
+    const reader = new FileReader();
+    reader.onload = (evt) => {
+      fromJSON(evt.target.result);
+    };
+    reader.readAsText(file);
+  }
+}
 
 fileInput.addEventListener('change', e => {
   const file = e.target.files[0];
