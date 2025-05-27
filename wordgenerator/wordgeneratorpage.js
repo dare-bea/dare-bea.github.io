@@ -63,21 +63,6 @@ function load() {
   }
 }
 
-fileInput.addEventListener('change', e => {
-  const file = e.target.files[0];
-  if (!file) return;
-  const reader = new FileReader();
-  reader.onload = evt => {
-    try {
-      // pass the raw JSON string into fromJSON
-      fromJSON(evt.target.result);
-    } catch (err) {
-      alert('Error loading data: ' + err.message);
-    }
-  };
-  reader.readAsText(file);
-});
-
 document.getElementById("clearAllButton")
 .addEventListener('click', () => {
   categories.length = 0;
