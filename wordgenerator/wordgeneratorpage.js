@@ -1,7 +1,7 @@
 const wordsOutput = document.getElementById("wordsOutput");
 const outputDetails = document.getElementById("outputDetails");
 
-function toJSON () {
+/*function toJSON () {
   return JSON.stringify({
     categories,
     wordCount,
@@ -61,7 +61,7 @@ function load() {
     };
     reader.readAsText(file);
   }
-}
+}*/
 
 document.getElementById("clearAllButton")
 .addEventListener('click', () => {
