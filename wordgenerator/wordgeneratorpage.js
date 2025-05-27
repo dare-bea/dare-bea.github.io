@@ -1,6 +1,25 @@
 const wordsOutput = document.getElementById("wordsOutput");
 const outputDetails = document.getElementById("outputDetails");
 
+function toJSON (data) {
+  return JSON.stringify({
+    categories,
+    wordCount,
+    optionalWeight
+    wordFilters: wordFilters.map(([regexp, replacement]) => [regexp.source, replacement]),
+    pattern
+  });
+}
+
+function fromJSON (json) {
+  let data = JSON.parse(json);
+  categories = data.categories;
+  wordCount = data.wordCount;
+  optionalWeight = data.optionalWeight;
+  wordFilters = data.wordFilters.map(([regexp, replacement]) => [new RegExp(regexp, "g"), replacement]);
+  pattern = data.pattern;
+}
+
 document.getElementById("clearAllButton")
 .addEventListener('click', (e) => {
   categories.length = 0;
@@ -11,14 +30,14 @@ document.getElementById("clearAllButton")
 });
 
 document.getElementById("addCategoryButton")
-.addEventListener('click', (e) => {
+.addEventListener('click', () => {
   categories.push(["", ""]);
   updateScreen();
 });
 
 document.getElementById("addFilterButton")
-.addEventListener('click', (e) => {
-  wordFilters.push([new RegExp("", "g"), ""]);
+.addEventListener('click', () => {
+  wordFilters.push([new RegExp("^(?:)$", "g"), ""]);
   updateScreen();
 });
 
@@ -28,9 +47,18 @@ document.getElementById("patternInput")
 });
 
 
+document.getElementById("wordCount")
+.addEventListener('input', (e) => {
+  wordCount = e.target.value;
+});
+
+document.getElementById("optionalWight")
+.addEventListener('input', (e) => {
+  optionalWeight = e.target.value;
+});
+
 document.getElementById("generateWords")
 .addEventListener('click', () => {
-  wordCount = document.getElementById("wordCount").value;
   let words;
   if (wordCount == 0) {
     words = generateAllWords(pattern, categories, wordFilters);

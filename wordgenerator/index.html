@@ -44,8 +44,16 @@
     <label for="patternInput">Pattern: </label><input id="patternInput">
     <div style="height: 2em;"></div>
 
-    <label for="wordCount">Word Count: </label><input type="number" id="wordCount" value="10">
-    <p>Provide a word count of 0 to generate all possible words</p>
+    <label for="wordCount">Word Count: </label><input type="number" id="wordCount" value="10" min="0">
+    <p>Provide a word count of 0 to generate all possible words. (WARNING: slow with complex patterns)</p>
+    <details>
+        <summary>
+            <h3 style="display: inline;">Advanced Options</h3>
+        </summary>
+        <label for="optionalWeight">Optional Weight: </label>
+        <input type="number" step="any" value="0.5" min="0" max="1" id="optionalWeight"><br>
+    </details>
+    
     <div style="height: 1em;"></div>
     <button id="generateWords">Generate Words!</button>
     <p id="outputDetails"></p>
