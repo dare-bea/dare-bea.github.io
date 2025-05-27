@@ -18,7 +18,7 @@ let wordFilters = [
 ];
 
 let wordCount = 20;
-let optionalWeight = 1/3;
+let optionalWeight = 0.5;
 
 class UnitNode {
   constructor (children) {this.type = "unit"; this.children = children;}
