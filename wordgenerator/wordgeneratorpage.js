@@ -1,7 +1,7 @@
 const wordsOutput = document.getElementById("wordsOutput");
 const outputDetails = document.getElementById("outputDetails");
 
-function toJSON (data) {
+function toJSON () {
   return JSON.stringify({
     categories,
     wordCount,
@@ -20,8 +20,50 @@ function fromJSON (json) {
   pattern = data.pattern;
 }
 
+// — SAVE —
+// (uses the “classic” download + file picker approach)
+document.getElementById('saveBtn').addEventListener('click', () => {
+  // 1. get your JSON string directly
+  const jsonStr = toJSON();
+
+  // 2. package it in a blob
+  const blob = new Blob([jsonStr], { type: 'application/json' });
+
+  // 3. kick off the browser “Save As…” dialog
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'pattern.wordgen.json';  // default filename
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  URL.revokeObjectURL(url);
+});
+
+// — LOAD —
+const fileInput = document.getElementById('fileInput');
+document.getElementById('loadBtn').addEventListener('click', () => {
+  fileInput.value = '';   // allow reloading the same file
+  fileInput.click();      // open the OS file picker
+});
+
+fileInput.addEventListener('change', e => {
+  const file = e.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = evt => {
+    try {
+      // pass the raw JSON string into fromJSON
+      fromJSON(evt.target.result);
+    } catch (err) {
+      alert('Error loading data: ' + err.message);
+    }
+  };
+  reader.readAsText(file);
+});
+
 document.getElementById("clearAllButton")
-.addEventListener('click', (e) => {
+.addEventListener('click', () => {
   categories.length = 0;
   categories.push(["C", ""], ["V", ""]);
   wordFilters.length = 0;
