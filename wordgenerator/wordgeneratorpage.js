@@ -124,6 +124,8 @@ document.getElementById("generateWords")
 function updateScreen() {
   const patternInput = document.getElementById("patternInput");
   patternInput.value = pattern;
+  const wordCountInput = document.getElementById("wordCount").value = wordCount;
+  const optionalWeightInput = document.getElementById("optionalWeight").value = optionalWeight;
   
   const filTable = document.getElementById("filters");
   
