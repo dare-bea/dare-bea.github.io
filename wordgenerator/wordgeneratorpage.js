@@ -3,8 +3,9 @@ const outputDetails = document.getElementById("outputDetails");
 
 document.getElementById("clearAllButton")
 .addEventListener('click', (e) => {
-  categories = [["C", ""], ["V", ""]];
-  wordFilters = [];
+  categories.length = 0;
+  categories.push(["C", ""], ["V", ""]);
+  wordFilters.length = 0;
   pattern = "";
   updateScreen();
 });
