@@ -20,10 +20,10 @@ function fromJSON (json) {
   pattern = data.pattern;
 }
 
-function download(data) {
+function download(data, filename) {
   var file = new Blob([data], {type: "application/json"});
   if (window.navigator.msSaveOrOpenBlob) // IE10+
-    window.navigator.msSaveOrOpenBlob(file, "Word Generation Pattern.wordgen");
+    window.navigator.msSaveOrOpenBlob(file, filename);
   else { // Others
     var a = document.createElement("a"),
             url = URL.createObjectURL(file);
