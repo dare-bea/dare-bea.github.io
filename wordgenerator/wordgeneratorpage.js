@@ -18,6 +18,7 @@ function fromJSON (json) {
   optionalWeight = data.optionalWeight;
   wordFilters = data.wordFilters.map(([regexp, replacement]) => [new RegExp(regexp, "g"), replacement]);
   pattern = data.pattern;
+  updateScreen();
 }
 
 function download(data, filename) {
