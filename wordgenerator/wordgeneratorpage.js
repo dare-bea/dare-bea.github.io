@@ -103,6 +103,11 @@ document.getElementById("optionalWeight")
   optionalWeight = e.target.value;
 });
 
+document.getElementById("sortWords")
+.addEventListener('input', (e) => {
+  sortWords = e.target.value;
+});
+
 document.getElementById("generateWords")
 .addEventListener('click', () => {
   let words;
