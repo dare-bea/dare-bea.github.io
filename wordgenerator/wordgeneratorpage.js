@@ -6,7 +6,6 @@ const outputDetails = document.getElementById("outputDetails");
 function toJSON () {
   return JSON.stringify({
     categories,
-    wordCount,
     optionalWeight,
     wordFilters: wordFilters.map(([regexp, replacement]) => [regexp.source, replacement]),
     pattern
@@ -15,11 +14,10 @@ function toJSON () {
 
 function fromJSON (json) {
   let data = JSON.parse(json);
-  categories = data.categories;
-  wordCount = data.wordCount;
-  optionalWeight = data.optionalWeight;
-  wordFilters = data.wordFilters.map(([regexp, replacement]) => [new RegExp(regexp, "g"), replacement]);
-  pattern = data.pattern;
+  categories = data.categories ?? [];
+  optionalWeight = data.optionalWeight ?? 0.5;
+  wordFilters = (data.wordFilters ?? []).map(([regexp, replacement]) => [new RegExp(regexp, "g"), replacement]);
+  pattern = data.pattern ?? "";
   updateScreen();
 }
 
