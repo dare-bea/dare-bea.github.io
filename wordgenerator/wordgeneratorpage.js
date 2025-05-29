@@ -1,3 +1,5 @@
+let sortWords = document.getElementById("sortWords").value;
+
 const wordsOutput = document.getElementById("wordsOutput");
 const outputDetails = document.getElementById("outputDetails");
 
@@ -110,6 +112,7 @@ document.getElementById("generateWords")
     words = generateWords(pattern, categories, wordFilters,
                           wordCount, optionalWeight);
   }
+  if (sortWords) words.sort();
   wordsOutput.innerText = words.join(" ");
   outputDetails.innerText =
     (words.length === 0)
@@ -125,8 +128,12 @@ document.getElementById("generateWords")
 function updateScreen() {
   const patternInput = document.getElementById("patternInput");
   patternInput.value = pattern;
-  const wordCountInput = document.getElementById("wordCount").value = wordCount;
-  const optionalWeightInput = document.getElementById("optionalWeight").value = optionalWeight;
+  const wordCountInput = document.getElementById("wordCount")
+  wordCountInput.value = wordCount;
+  const optionalWeightInput = document.getElementById("optionalWeight")
+  optionalWeightInput.value = optionalWeight;
+  const sortWordsInput = document.getElementById("sortWords")
+  sortWordsInput.value = sortWords;
   
   const filTable = document.getElementById("filters");
   

@@ -236,10 +236,10 @@ function generateAllWordsFromNode(node, categories) {
       ));
       return result.map((x) => x.join(""));
     case "optional":
-      return [...generateAllWordsFromNode(node.child, categories), ''];
+      return ['', ...generateAllWordsFromNode(node.child, categories)];
     case "filter":
       return generateAllWordsFromNode(node.child, categories)
-        .filter(result => !word?.match(node.filter));
+        .filter(word => !word?.match(node.filter));
     default:
       return undefined;
   }
