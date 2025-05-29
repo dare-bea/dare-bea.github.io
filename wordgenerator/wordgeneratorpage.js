@@ -1,4 +1,4 @@
-let sortWords = document.getElementById("sortWords").value;
+let sortWords = false;
 
 const wordsOutput = document.getElementById("wordsOutput");
 const outputDetails = document.getElementById("outputDetails");
@@ -103,7 +103,7 @@ document.getElementById("optionalWeight")
 
 document.getElementById("sortWords")
 .addEventListener('input', (e) => {
-  sortWords = e.target.value;
+  sortWords = e.target.checked;
 });
 
 document.getElementById("generateWords")
