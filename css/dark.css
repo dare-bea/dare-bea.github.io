@@ -25,7 +25,7 @@ a:active {
     color: salmon;
 }
 
-*.interact,
+.interact,
 button,
 select {
     color: #f4f4f4;
@@ -33,21 +33,13 @@ select {
     border: 2px inset #aaa;
 }
 
-*.interact:hover,
-button:hover,
-select:hover,
-*.interact:disabled,
-button:disabled,
-select:disabled {
+:is(.interact, button, select):is(
+        :hover, :focus-within, :disabled) {
     background-color: #555;
 }
 
-*.interact:active,
-button:active,
-select:active,
-*.interact:disabled:hover,
-button:disabled:hover,
-select:disabled:hover {
+:is(.interact, button, select):is(
+        :active, :disabled:hover, :disabled:focus-within) {
     background-color: #666;
 }
 
@@ -57,18 +49,22 @@ ul.nav-bar {
     border-bottom: 2px solid #666;
 }
 
-ul.nav-bar li :is(*.interact, a, button, select) {
+ul.nav-bar li :is(
+        a, .interact, button, select):is(
+        :hover, :focus-within) {
     color: #fff;
     background-color: #444;
 }
 
-ul.nav-bar li :is(*.interact, a, button, select):hover {
+ul.nav-bar li :is(
+        a, .interact, button, select):is(
+        :hover, :focus-within) {
     color: white;
     border-bottom: 2px solid dodgerblue;
     background-color: #555;
 }
 
-ul.nav-bar li :is(*.interact, a, button, select):active {
+ul.nav-bar li :is(.interact, a, button, select):active {
     background-color: #666;
 }
 

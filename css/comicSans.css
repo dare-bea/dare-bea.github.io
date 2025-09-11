@@ -20,7 +20,7 @@ select {
     font-family: 'Comic Sans', 'Comic Sans MS', 'Chalkboard', 'ITC Kristen', cursive;
 }
 
-*.interact,
+.interact,
 button,
 select {
     color: #333;
@@ -28,21 +28,13 @@ select {
     border: 2px outset #aaa;
 }
 
-*.interact:hover,
-button:hover,
-select:hover,
-*.interact:disabled,
-button:disabled,
-select:disabled {
+:is(.interact, button, select):is(
+        :hover, :focus-within, :disabled) {
     background-color: #ddd;
 }
 
-*.interact:active,
-button:active,
-select:active,
-*.interact:disabled:hover,
-button:disabled:hover,
-select:disabled:hover {
+:is(.interact, button, select):is(
+        :active, :disabled:hover, :disabled:focus-within) {
     background-color: #ccc;
 }
 
@@ -52,18 +44,20 @@ ul.nav-bar {
     border-bottom: 2px solid #ccc;
 }
 
-ul.nav-bar li :is(*.interact, a, button, select) {
+ul.nav-bar li :is(.interact, a, button, select) {
     color: #333;
     background-color: #f8f8f8;
 }
 
-ul.nav-bar li :is(*.interact, a, button, select):hover {
+ul.nav-bar li :is(
+        a, .interact, button, select):is(
+        :hover, :focus-within) {
     color: dodgerblue;
     border-bottom: 2px solid dodgerblue;
     background-color: #f4f4f4;
 }
 
-ul.nav-bar li :is(*.interact, a, button, select):active {
+ul.nav-bar li :is(.interact, a, button, select):active {
     background-color: #eee;
 }
 

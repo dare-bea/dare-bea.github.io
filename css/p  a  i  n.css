@@ -25,7 +25,7 @@ img {
     filter: brightness(90%) sepia(60%) saturate(200%) hue-rotate(-30deg);
 }
 
-*.interact,
+.interact,
 button,
 select {
     color: #aaa;
@@ -33,21 +33,13 @@ select {
     border: 2px outset #aaa;
 }
 
-*.interact:hover,
-button:hover,
-select:hover,
-*.interact:disabled,
-button:disabled,
-select:disabled {
+:is(.interact, button, select):is(
+        :hover, :focus-within, :disabled) {
     background-color: #666;
 }
 
-*.interact:active,
-button:active,
-select:active,
-*.interact:disabled:hover,
-button:disabled:hover,
-select:disabled:hover {
+:is(.interact, button, select):is(
+        :active, :disabled:hover, :disabled:focus-within) {
     background-color: #777;
 }
 
@@ -57,18 +49,20 @@ ul.nav-bar {
     border-bottom: 2px solid #999;
 }
 
-ul.nav-bar li :is(a, *.interact, button, select) {
+ul.nav-bar li :is(a, .interact, button, select) {
     color: #aaa;
     background-color: #555;
 }
 
-ul.nav-bar li :is(a, *.interact, button, select):hover {
+ul.nav-bar li :is(
+        a, .interact, button, select):is(
+        :hover, :focus-within) {
     color: crimson;
     border-bottom: 2px solid crimson;
     background-color: #666;
 }
 
-ul.nav-bar li :is(a, *.interact, button, select):active {
+ul.nav-bar li :is(a, .interact, button, select):active {
     background-color: #777;
 }
 

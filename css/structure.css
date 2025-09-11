@@ -11,7 +11,7 @@ img {
     max-height: 80vh;
 }
 
-*.interact, button, select {
+.interact, button, select {
     padding: 0.6em 0.8em;
     border-radius: 0.4em;
     margin: 0 0.2em;
@@ -19,12 +19,12 @@ img {
     transition: transform 0.3s, background-color 0.3s;
 }
 
-:is(*.interact, button, select):is(*:hover, *:focus-within):not(*:disabled) {
+:is(.interact, button, select):is(:hover, :focus-within):not(:disabled) {
     cursor: pointer;
     transform: translateY(-3px);
 }
 
-:is(*.interact, button, select):active {
+:is(.interact, button, select):active {
     padding-top: 0.5em;
     margin-top: 0.1em;
 }
@@ -56,7 +56,7 @@ ul.nav-bar li :is(h1, h2, h3, h4, h5, h6) {
     margin-right: 1em;
 }
 
-ul.nav-bar li :is(*.interact, a, button, select) {
+ul.nav-bar li :is(.interact, a, button, select) {
     padding: 0.6em 0.8em;
     border-radius: 0.4em;
     margin: 0 0.2em;
@@ -66,13 +66,13 @@ ul.nav-bar li :is(*.interact, a, button, select) {
     transition-duration: 0.3s;
 }
 
-ul.nav-bar li :is(*.interact, a, button, select):is(*:hover, *:focus-within) {
+ul.nav-bar li :is(.interact, a, button, select):is(:hover, :focus-within) {
     padding-bottom: calc(0.6em - 2px);
     transform: translateY(-3px);
     cursor: pointer;
 }
 
-ul.nav-bar li :is(*.interact, a, button, select):has(~ ul)::after {
+ul.nav-bar li :is(.interact, a, button, select):has(~ ul)::after {
     display: inline;
     content: " ⯆";
     padding: 0;
@@ -97,7 +97,7 @@ ul.nav-bar li ul li{
     padding: 0.2em;
 }
 
-ul.nav-bar li:is(*:hover, *:focus-within) ul {
+ul.nav-bar li:is(:hover, :focus-within) ul {
     display: block;
 }
 
