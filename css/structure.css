@@ -19,7 +19,7 @@ img {
     transition: transform 0.3s, background-color 0.3s;
 }
 
-:is(*.interact, button, select):is(*:hover, *:focus):not(*:disabled) {
+:is(*.interact, button, select):is(*:hover, *:focus-within):not(*:disabled) {
     cursor: pointer;
     transform: translateY(-3px);
 }
@@ -66,7 +66,7 @@ ul.nav-bar li :is(*.interact, a, button, select) {
     transition-duration: 0.3s;
 }
 
-ul.nav-bar li :is(*.interact, a, button, select):is(*:hover, *:focus) {
+ul.nav-bar li :is(*.interact, a, button, select):is(*:hover, *:focus-within) {
     padding-bottom: calc(0.6em - 2px);
     transform: translateY(-3px);
     cursor: pointer;
@@ -97,7 +97,7 @@ ul.nav-bar li ul li{
     padding: 0.2em;
 }
 
-ul.nav-bar li:is(*:hover, *:focus) ul {
+ul.nav-bar li:is(*:hover, *:focus-within) ul {
     display: block;
 }
 
