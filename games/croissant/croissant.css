@@ -1,6 +1,14 @@
+html {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
 .examination-department-of-interdimensional-anomaly-and-travel {
     font-family: Courier, 'Courier New', monospace;
     font-style: oblique;
+}
+
+.examination-department-of-interdimensional-anomaly-and-travel cite {
+    font-weight: bold;
 }
 
 .noise {
