@@ -109,6 +109,7 @@ ul.nav-bar li:is(:hover, :focus-within) ul {
     grid-auto-rows: minmax(20vh, min(40vh, auto));
     gap: 20px;
     flex: auto;
+    justify-content: center;
     box-sizing: border-box;
     padding: 0 1em;
 }
@@ -135,10 +136,15 @@ ul.nav-bar li:is(:hover, :focus-within) ul {
     transition: background-color 0.3s;
 }
 
-.container img {
+.container img:not(.no-stretch) {
     object-fit: cover;
     min-width: 0;
     width: 100% !important;
+    height: 100%;
+}
+
+.container img.no-stretch {
+    object-fit: contain;
     height: 100%;
 }
 
