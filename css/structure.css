@@ -106,7 +106,7 @@ ul.nav-bar li:is(:hover, :focus-within) ul {
 .container {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
-    grid-auto-rows: minmax(20vh, auto);
+    grid-auto-rows: minmax(20vh, min(40vh, auto));
     gap: 20px;
     flex: auto;
     box-sizing: border-box;
@@ -124,7 +124,9 @@ ul.nav-bar li:is(:hover, :focus-within) ul {
 }
 
 .container:is(.flex-column, .flex-row) > * {
+    width: auto;
     min-height: 20vh;
+    max-height: 40vh;
 }
 
 .container .card {
@@ -133,17 +135,13 @@ ul.nav-bar li:is(:hover, :focus-within) ul {
     transition: background-color 0.3s;
 }
 
-.container .card img {
+.container img {
     object-fit: cover;
     min-width: 0;
-    width: 100%;
+    width: 100% !important;
     height: 100%;
 }
 
 .container img:not(.card img) {
-    object-fit: cover;
     box-sizing: border-box;
-    min-width: 0;
-    width: 100%;
-    height: 100%;
 }
