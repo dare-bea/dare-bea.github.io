@@ -7,7 +7,7 @@ html {
 
 img {
     max-width: 96%;
-    min-height: 200px;
+    min-height: min(200px, 100%);
     max-height: 80vh;
 }
 
@@ -108,46 +108,30 @@ ul.nav-bar li:is(:hover, :focus-within) ul {
     grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
     grid-auto-rows: minmax(20vh, min(40vh, auto));
     gap: 20px;
+    box-sizing: border-box;
+    padding: 0 1em;
+}
+
+.flex-container {
+    display: flex;
     flex: auto;
+    flex-direction: row;
+    gap: 20px;
     justify-content: center;
     box-sizing: border-box;
     padding: 0 1em;
 }
 
-.flex-row {
-    display: flex;
-    flex-direction: row;
-}
-
-.flex-column {
-    display: flex;
-    flex-direction: column;
-}
-
-.container:is(.flex-column, .flex-row) > * {
-    width: auto;
-    min-height: 20vh;
-    max-height: 40vh;
-}
-
-.container .card {
+:is(.container, .flex-container) .card {
     border-radius: 1em;
     padding: 0.2em 1em;
     transition: background-color 0.3s;
 }
 
-.container img:not(.no-stretch) {
+:is(.container, .flex-container) img {
     object-fit: cover;
-    min-width: 0;
-    width: 100% !important;
-    height: 100%;
 }
 
-.container img.no-stretch {
+img.fit-contain {
     object-fit: contain;
-    height: 100%;
-}
-
-.container img:not(.card img) {
-    box-sizing: border-box;
 }
