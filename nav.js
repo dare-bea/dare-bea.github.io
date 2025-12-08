@@ -66,7 +66,7 @@ async function pushThemeSelect () {
     const themeSelectDOM = await getSourceAsDOM("/themeselect.html");
     const navbar = document.getElementById('topnav');
     for (const elem of themeSelectDOM.body.children) {
-        navbar.children.appendChild(elem);
+        navbar.appendChild(elem);
     }
     theme_select = document.getElementById('theme-select');
     if (getCookie("theme") != null) {
@@ -81,7 +81,7 @@ async function pushOptions (url) {
     const DOM = await getSourceAsDOM(url);
     const navbar = document.getElementById('topnav');
     for (const elem of DOM.body.children) {
-        navbar.children.appendChild(elem);
+        navbar.appendChild(elem);
         if (!elem.id) continue;
         const cookieValue = getCookie(elem.id);
         if (cookieValue != null) {
