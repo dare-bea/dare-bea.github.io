@@ -122,6 +122,10 @@ ul.nav-bar li:is(:hover, :focus-within) ul {
     padding: 0 1em;
 }
 
+:is(.container, .flex-container) * {
+    display: block;
+}
+
 :is(.container, .flex-container) .card {
     border-radius: 1em;
     padding: 0.2em 1em;
