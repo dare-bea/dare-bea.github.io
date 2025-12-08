@@ -143,7 +143,7 @@ ul.nav-bar li:is(:hover, :focus-within) ul {
 }
 
 .flex-container img {
-    min-height: none;
+    min-height: 0;
     max-height: 60vh;
 }
 
