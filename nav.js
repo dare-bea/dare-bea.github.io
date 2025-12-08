@@ -50,28 +50,33 @@ function cookieNotice(cvalue) {
 
 const onSettingLoadFuncs = {
     "cl-yuri": function (value) {
-        if (value === "hide") {
-            for (const elem of document.getElementsByClassName("yuri")) {
-                const newElem = document.createElement("span");
-                newElem.innerText = "Hidden Yuri";
-                elem.style.display = 'none';
-                elem.parentNode.insertBefore(newElem, elem);
-            }
-        } else if (value === "optional") {
+        switch (value) {
+        case "hide": {
             for (const elem of document.getElementsByClassName("yuri")) {
                 if (elem.tagName === "DETAILS") {
                     elem.open = false;
                 } else {
-                    const newElem = document.createElement("span");
-                    newElem.innerText = "Hidden Yuri";
-                    elem.style.display = 'none';
-                    elem.parentNode.insertBefore(newElem, elem);
+                    const notice = document.createElement("span");
+                    notice.innerText = "Hidden Yuri";
+                    const showButton = document.createElement("button");
+                    showButton.innerText = "Show"
+                    showButton.addEventListener("click", function (e) {
+                        elem.hidden = !elem.hidden;
+                        showButton.innerText = elem.hidden ? "Show" : "Hide"
+                    })
+                    notice.appendChild()
+                    elem.hidden = true;
+                    elem.parentNode.insertBefore(notice, elem);
                 }
             }
-        } else if (value === "show") {
+            break;
+        }
+        case "show":
+        default: {
             for (const elem of document.getElementsByClassName("yuri")) {
                 if (elem.tagName === "DETAILS") elem.open = true;
             }
+            break;
         }
     }
 };
