@@ -128,6 +128,10 @@ ul.nav-bar li:is(:hover, :focus-within) ul {
     transition: background-color 0.3s;
 }
 
+:is(.container, .flex-container) .card img {
+    height: 100%;
+}
+
 :is(.container, .flex-container) img {
     object-fit: cover;
 }
