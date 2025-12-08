@@ -122,7 +122,7 @@ ul.nav-bar li:is(:hover, :focus-within) ul {
     padding: 0 1em;
 }
 
-:is(.container, .flex-container) * {
+:is(.container, .flex-container) > * {
     display: block;
 }
 
