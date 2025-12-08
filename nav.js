@@ -23,8 +23,8 @@ function getCookie(cname) {
 
 /* NAV FUNCTIONS */
 
-const header = document.getElementById("header");
-const theme = document.getElementById('theme');
+let header;
+let theme;
 let theme_select;
 
 function changeTheme() {
@@ -127,12 +127,16 @@ async function loadNavigation() {
     }
 }
 
-// Call the async function
-loadNavigation()
-.then(function () {
-    if (header.classList.contains("cl-settings")) pushOptions("/clsettings.html");
-    if (!header.classList.contains("no-theme")) pushThemeSelect();
-})
-.then(function () {
-    document.body.scrollTop = document.documentElement.scrollTop = 0;
-});
+document.addEventListener('DOMContentLoaded', function() {
+    header = document.getElementById("header");
+    theme = document.getElementById('theme');
+    
+    loadNavigation()
+    .then(function () {
+        if (header.classList.contains("cl-settings")) pushOptions("/clsettings.html");
+        if (!header.classList.contains("no-theme")) pushThemeSelect();
+    })
+    .then(function () {
+        document.body.scrollTop = document.documentElement.scrollTop = 0;
+    });
+}
