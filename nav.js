@@ -72,7 +72,7 @@ const onSettingLoadFuncs = {
 
 const onSettingChangeFuncs = {
     "cl-yuri": function (value) {
-        window.location.reload();
+        window.location.reload(false);
     }
 }
 
