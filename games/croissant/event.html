@@ -38,7 +38,12 @@
         <img src="gift.png" alt="Blue Chaos Emerald of Monarch ToS2" class="fit-contain">
         <details class="yuri"> <!-- Allow hiding the yuri -->
             <summary>Yuri: Kanamafu</summary>
-            <img src="https://pbs.twimg.com/media/FZ4e9dXWYAACGug.jpg" alt="Kanamafu Art" class="fit-contain">
+            <img id="kanamafu" src="https://pbs.twimg.com/media/FZ4e9dXWYAACGug.jpg" alt="Kanamafu Art" class="fit-contain">
+            <script>
+                if (Math.floor(Math.random() * 83) < 1) {
+                    document.getElementById("kanamafu").src = "https://i.pinimg.com/originals/e9/43/fb/e943fbb6202caa99f0315dabbdb9f3c3.gif";
+                }
+            </script>
         </details>
     </div>
     <p>As punishment for attempting to release Inhabitant 3 from containment,
