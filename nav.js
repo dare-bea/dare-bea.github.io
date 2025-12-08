@@ -48,21 +48,6 @@ function cookieNotice(cvalue) {
     document.getElementById("cookie-notice").remove();
 }
 
-function pushThemeSelect () {
-    const themeSelectDOM = await getSourceAsDOM("/themeselect.html");
-    const navbar = document.getElementById('topnav');
-    for (const elem of themeSelectDOM.body.children) {
-        navbar.children.appendChild(elem);
-    }
-    theme_select = document.getElementById('theme-select');
-    if (getCookie("theme") != null) {
-        theme_select.value = getCookie("theme");
-    }
-    changeTheme()
-
-    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', changeTheme);
-}
-
 const onSettingLoadFuncs = {
     "cl-yuri": function (value) {
         for (const elem of document.getElementsByClassName("yuri")) {
@@ -77,7 +62,22 @@ const onSettingChangeFuncs = {
     }
 }
 
-function pushOptions (url) {
+async function pushThemeSelect () {
+    const themeSelectDOM = await getSourceAsDOM("/themeselect.html");
+    const navbar = document.getElementById('topnav');
+    for (const elem of themeSelectDOM.body.children) {
+        navbar.children.appendChild(elem);
+    }
+    theme_select = document.getElementById('theme-select');
+    if (getCookie("theme") != null) {
+        theme_select.value = getCookie("theme");
+    }
+    changeTheme()
+
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', changeTheme);
+}
+
+async function pushOptions (url) {
     const DOM = await getSourceAsDOM(url);
     const navbar = document.getElementById('topnav');
     for (const elem of DOM.body.children) {
