@@ -131,6 +131,13 @@ ul.nav-bar li:is(:hover, :focus-within) ul {
     transition: background-color 0.3s;
 }
 
+.container > img {
+    min-height: none;
+    max-height: none;
+    height: 100%;
+    width: 100%;
+}
+
 :is(.container, .flex-container) img {
     object-fit: cover;
 }
