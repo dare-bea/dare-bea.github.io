@@ -54,7 +54,7 @@ const onSettingLoadFuncs = {
             for (const elem of document.getElementsByClassName("yuri")) {
                 elem.style.display = 'none';
             }
-        } else (value === "optional") {
+        } else if (value === "optional") {
             for (const elem of document.getElementsByClassName("yuri")) {
                 if (elem.tagName === "details") {
                     elem.open = false;
@@ -62,8 +62,7 @@ const onSettingLoadFuncs = {
                     elem.style.display = 'none';
                 }
             }
-        }
-        } else (value === "show") {
+        } else if (value === "show") {
             for (const elem of document.getElementsByClassName("yuri")) {
                 if (elem.tagName === "details") elem.open = true;
             }
