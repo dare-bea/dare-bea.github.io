@@ -130,7 +130,7 @@ async function loadNavigation() {
 document.addEventListener('DOMContentLoaded', function() {
     header = document.getElementById("header");
     theme = document.getElementById('theme');
-    
+
     loadNavigation()
     .then(function () {
         if (header.classList.contains("cl-settings")) pushOptions("/clsettings.html");
@@ -139,4 +139,4 @@ document.addEventListener('DOMContentLoaded', function() {
     .then(function () {
         document.body.scrollTop = document.documentElement.scrollTop = 0;
     });
-}
+})
