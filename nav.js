@@ -52,14 +52,20 @@ const onSettingLoadFuncs = {
     "cl-yuri": function (value) {
         if (value === "hide") {
             for (const elem of document.getElementsByClassName("yuri")) {
+                const newElem = document.createElement("span");
+                newElem.innerText = "Hidden Yuri";
                 elem.style.display = 'none';
+                elem.parentNode.insertBefore(newElem, elem);
             }
         } else if (value === "optional") {
             for (const elem of document.getElementsByClassName("yuri")) {
                 if (elem.tagName === "DETAILS") {
                     elem.open = false;
                 } else {
+                    const newElem = document.createElement("span");
+                    newElem.innerText = "Hidden Yuri";
                     elem.style.display = 'none';
+                    elem.parentNode.insertBefore(newElem, elem);
                 }
             }
         } else if (value === "show") {
