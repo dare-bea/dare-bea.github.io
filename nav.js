@@ -68,13 +68,13 @@ const onSettingLoadFuncs = {
             }
         }
     }
-}
+};
 
 const onSettingChangeFuncs = {
     "cl-yuri": function (value) {
-        window.location.reload(false);
+        window.location.reload(true);
     }
-}
+};
 
 async function pushThemeSelect () {
     const themeSelectDOM = await getSourceAsDOM("/themeselect.html");
@@ -96,19 +96,21 @@ async function pushOptions (url) {
     const navbar = document.getElementById('topnav');
     for (const elem of DOM.body.children) {
         navbar.appendChild(elem);
-        const id = elem.id
-        if (!id) continue;
-        const cookieValue = getCookie(id);
-        if (cookieValue != null) {
-            elem.value = cookieValue;
-        }
-        elem.addEventListener("change", function (e) {
-            if (getCookie("cookies") == "ok") {
-                document.cookie = `${id}=${e.target.value}; path=/; max-age=2419200; SameSite=Lax`;
+        for (const child of elem.getElementsByTagName("*")) {
+            const id = child.id;
+            if (!id) continue;
+            const cookieValue = getCookie(id);
+            if (cookieValue != null) {
+                child.value = cookieValue;
             }
-            onSettingChangeFuncs[id]?.(e.target.value);
-        });
-        onSettingLoadFuncs[id]?.(elem.value);
+            child.addEventListener("change", function (e) {
+                if (getCookie("cookies") == "ok") {
+                    document.cookie = `${id}=${e.target.value}; path=/; max-age=2419200; SameSite=Lax`;
+                }
+                onSettingChangeFuncs[id]?.(e.target.value);
+            });
+            onSettingLoadFuncs[id]?.(child.value);
+        }
     }
 }
 
