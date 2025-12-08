@@ -121,6 +121,10 @@ ul.nav-bar li:is(:hover, :focus-within) ul {
     padding: 0 1em;
 }
 
+.card {
+    overflow: scroll;
+}
+
 :is(.container, .flex-container) > * {
     display: block;
 }
@@ -150,10 +154,10 @@ ul.nav-bar li:is(:hover, :focus-within) ul {
 
 .flex-container img {
     min-width: 0;
-    max-width: none;
+    max-width: 100%;
     width: auto;
     min-height: 0;
-    max-height: 60vh;
+    max-height: 100%;
     height: auto;
 }
 
