@@ -134,7 +134,7 @@ ul.nav-bar li:is(:hover, :focus-within) ul {
 .container > img {
     max-height: none;
     height: 100%;
-    width: 100%;
+    max-width: 100%;
 }
 
 .flex-container > * {
@@ -143,9 +143,13 @@ ul.nav-bar li:is(:hover, :focus-within) ul {
 }
 
 .flex-container img {
+    max-width: none;
     min-height: 0;
-    max-height: none;
-    height: auto;
+    max-height: 60vh;
+}
+
+.flex-container > img {
+    max-width: 100%;
 }
 
 :is(.container, .flex-container) img {
