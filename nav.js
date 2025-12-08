@@ -64,7 +64,7 @@ const onSettingLoadFuncs = {
                         elem.hidden = !elem.hidden;
                         showButton.innerText = elem.hidden ? "Show" : "Hide"
                     })
-                    notice.appendChild()
+                    notice.appendChild(showButton)
                     elem.hidden = true;
                     elem.parentNode.insertBefore(notice, elem);
                 }
