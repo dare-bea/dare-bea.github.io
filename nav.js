@@ -57,7 +57,7 @@ const onSettingLoadFuncs = {
                         elem.open = false;
                     } else {
                         const notice = document.createElement("span");
-                        notice.innerText = "Hidden Yuri";
+                        notice.innerText = "Hidden Content";
                         const showButton = document.createElement("button");
                         showButton.innerText = "Show";
                         showButton.addEventListener("click", function (e) {
