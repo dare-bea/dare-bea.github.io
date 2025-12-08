@@ -8,7 +8,7 @@ html {
 img {
     max-width: 96%;
     min-height: min(200px, 100%);
-    max-height: 80vh;
+    max-height: min(80vh, 100%);
 }
 
 .interact, button, select {
@@ -126,10 +126,6 @@ ul.nav-bar li:is(:hover, :focus-within) ul {
     border-radius: 1em;
     padding: 0.2em 1em;
     transition: background-color 0.3s;
-}
-
-:is(.container, .flex-container) .card img {
-    height: 100%;
 }
 
 :is(.container, .flex-container) img {
