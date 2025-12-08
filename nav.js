@@ -50,8 +50,23 @@ function cookieNotice(cvalue) {
 
 const onSettingLoadFuncs = {
     "cl-yuri": function (value) {
-        for (const elem of document.getElementsByClassName("yuri")) {
-            if (elem.tagName === "details") elem.open = value;
+        if (value === "hide") {
+            for (const elem of document.getElementsByClassName("yuri")) {
+                elem.style.display = 'none';
+            }
+        } else (value === "optional") {
+            for (const elem of document.getElementsByClassName("yuri")) {
+                if (elem.tagName === "details") {
+                    elem.open = false;
+                } else {
+                    elem.style.display = 'none';
+                }
+            }
+        }
+        } else (value === "show") {
+            for (const elem of document.getElementsByClassName("yuri")) {
+                if (elem.tagName === "details") elem.open = true;
+            }
         }
     }
 }
@@ -82,15 +97,19 @@ async function pushOptions (url) {
     const navbar = document.getElementById('topnav');
     for (const elem of DOM.body.children) {
         navbar.appendChild(elem);
-        if (!elem.id) continue;
-        const cookieValue = getCookie(elem.id);
+        const id = elem.id
+        if (!id) continue;
+        const cookieValue = getCookie(id);
         if (cookieValue != null) {
             elem.value = cookieValue;
         }
         elem.addEventListener("change", function (e) {
-            onSettingChangeFuncs[elem.id]?.(e.target.value)
+            if (getCookie("cookies") == "ok") {
+                document.cookie = `${id}=${e.target.value}; path=/; max-age=2419200; SameSite=Lax`;
+            }
+            onSettingChangeFuncs[id]?.(e.target.value);
         });
-        onSettingLoadFuncs[elem.id]?.(elem.value);
+        onSettingLoadFuncs[id]?.(elem.value);
     }
 }
 
