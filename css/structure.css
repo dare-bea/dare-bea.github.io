@@ -152,12 +152,17 @@ ul.nav-bar li:is(:hover, :focus-within) ul {
     height: auto;
 }
 
+.flex-container .card img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
 .flex-container img {
     min-width: 0;
-    max-width: 100%;
+    max-width: none;
     width: auto;
     min-height: 0;
-    max-height: 100%;
+    max-height: 60vh;
     height: auto;
 }
 
