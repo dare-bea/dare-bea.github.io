@@ -162,7 +162,7 @@ ul.nav-bar li:is(:hover, :focus-within) ul {
     max-width: none;
     width: auto;
     min-height: 0;
-    max-height: 60vh;
+    max-height: none;
     height: auto;
 }
 
