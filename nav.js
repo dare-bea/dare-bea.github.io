@@ -59,12 +59,12 @@ const onSettingLoadFuncs = {
                     const notice = document.createElement("span");
                     notice.innerText = "Hidden Yuri";
                     const showButton = document.createElement("button");
-                    showButton.innerText = "Show"
+                    showButton.innerText = "Show";
                     showButton.addEventListener("click", function (e) {
                         elem.hidden = !elem.hidden;
                         showButton.innerText = elem.hidden ? "Show" : "Hide"
-                    })
-                    notice.appendChild(showButton)
+                    });
+                    notice.appendChild(showButton);
                     elem.hidden = true;
                     elem.parentNode.insertBefore(notice, elem);
                 }
