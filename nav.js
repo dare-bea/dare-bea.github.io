@@ -147,8 +147,5 @@ document.addEventListener('DOMContentLoaded', function() {
     .then(function () {
         if (header.classList.contains("cl-settings")) pushOptions("/clsettings.html");
         if (!header.classList.contains("no-theme")) pushThemeSelect();
-    })
-    .then(function () {
-        document.body.scrollTop = document.documentElement.scrollTop = 0;
     });
 })

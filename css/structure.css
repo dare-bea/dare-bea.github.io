@@ -119,6 +119,7 @@ ul.nav-bar li:is(:hover, :focus-within) ul {
     justify-content: center;
     box-sizing: border-box;
     padding: 0 1em;
+    overflow-x: scroll;
 }
 
 .card {
@@ -143,8 +144,7 @@ ul.nav-bar li:is(:hover, :focus-within) ul {
 
 .flex-container > * {
     display: block;
-    min-height: 30vh;
-    max-height: 60vh;
+    height: 60vh;
 }
 
 .flex-container * {
@@ -154,10 +154,10 @@ ul.nav-bar li:is(:hover, :focus-within) ul {
 
 .flex-container img {
     min-width: 0;
-    max-width: 100%;
+    max-width: none;
     width: auto;
     min-height: 0;
-    max-height: 100%;
+    max-height: 60vh;
     height: auto;
 }
 
