@@ -36,30 +36,32 @@
     <p>As a polite gesture, here are some gifts for your troubles.</p>
     <div class="flex-container">
         <img src="gift.png" alt="Blue Chaos Emerald of Monarch ToS2" class="fit-contain">
-        <details class="yuri"> <!-- Allow hiding the yuri -->
-            <summary>Yuri: Kanamafu</summary>
+        <details id="kanamafu-details" class="yuri"> <!-- Allow hiding the yuri -->
+            <summary id="kanamafu-summary">Yuri: Kanamafu</summary>
             <img id="kanamafu" src="https://pbs.twimg.com/media/FZ4e9dXWYAACGug.jpg" alt="Kanamafu Art" class="fit-contain">
-            <script>
-                function jumpscare() {
-                    document.getElementById("kanamafu").src = "freddyfazbear.gif";
-                    let paragraph = document.createElement("p");
-                    paragraph.innerText = "har har har youve been fredy jumpsacred";
-                    document.getElementById("kanamafu").appendChild(paragraph);
-                }
-                if (getCookie("jumpscare") == "found") {
-                    let jumpscare_button = document.createElement("button");
-                    jumpscare_button.innerText = "Get jumpscared";
-                    jumpscare_button.onclick = jumpscare;
-                    document.getElementById("kanamafu").parentNode.insertBefore(jumpscare_button, document.getElementById("kanamafu"));
-                }
-                if (Math.floor(Math.random() * 83) < 1) {
-                    jumpscare()
-                    if (getCookie("cookies") == "ok") {
-                        document.cookie = "jumpscare=found; path=/games/croissant; max-age=31556952; SameSite=Lax";
-                    }
-                }
-            </script>
         </details>
+        <script>
+            function jumpscare() {
+                document.getElementById("kanamafu-details").open = true;
+                document.getElementById("kanamafu-details").classList.remove("yuri");
+                document.getElementById("kanamafu").src = "freddyfazbear.gif";
+                let paragraph = document.createElement("p");
+                paragraph.innerText = "har har har youve been fredy jumpsacred";
+                document.getElementById("kanamafu").parentNode.appendChild(paragraph);
+            }
+            if (getCookie("jumpscare") == "found") {
+                let jumpscare_button = document.createElement("button");
+                jumpscare_button.innerText = "Get jumpscared";
+                jumpscare_button.onclick = jumpscare;
+                document.getElementById("kanamafu").parentNode.insertBefore(jumpscare_button, document.getElementById("kanamafu"));
+            }
+            if (Math.floor(Math.random() * 83) < 1) {
+                jumpscare()
+                if (getCookie("cookies") == "ok") {
+                    document.cookie = "jumpscare=found; path=/games/croissant; max-age=31556952; SameSite=Lax";
+                }
+            }
+        </script>
     </div>
     <p>As punishment for attempting to release Inhabitant 3 from containment,
         we ask you reread <cite>A Practial Guide to Evil</cite> within the
