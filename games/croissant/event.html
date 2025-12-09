@@ -70,6 +70,7 @@
         jumpscare_button = document.createElement("button");
         jumpscare_button.innerText = "Get jumpscared";
         jumpscare_button.onclick = jumpscare;
+        jumpscare_button.style.display = 'block';
         document.getElementById("kanamafu").parentNode.insertBefore(jumpscare_button, document.getElementById("kanamafu"));
     }
     if (Math.floor(Math.random() * 83) < 1) {
