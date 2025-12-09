@@ -16,6 +16,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap" rel="stylesheet">
     <link id="croissant" rel="stylesheet" href="croissant.css">
+    <link rel="preload" as="image" href="freddyfazbear.gif">
 </head>
 
 <body>
@@ -41,6 +42,7 @@
             <img id="kanamafu" src="https://pbs.twimg.com/media/FZ4e9dXWYAACGug.jpg" alt="Kanamafu Art" class="fit-contain">
         </details>
         <script>
+            let jumpscare_button;
             function jumpscare() {
                 document.getElementById("kanamafu-details").open = true;
                 document.getElementById("kanamafu-details").classList.remove("yuri");
@@ -48,9 +50,12 @@
                 let paragraph = document.createElement("p");
                 paragraph.innerText = "har har har youve been fredy jumpsacred";
                 document.getElementById("kanamafu").parentNode.appendChild(paragraph);
+                if (jumpscare_button !== undefined) {
+                    jumpscare_button.onclick = null;
+                }
             }
             if (getCookie("jumpscare") == "found") {
-                let jumpscare_button = document.createElement("button");
+                jumpscare_button = document.createElement("button");
                 jumpscare_button.innerText = "Get jumpscared";
                 jumpscare_button.onclick = jumpscare;
                 document.getElementById("kanamafu").parentNode.insertBefore(jumpscare_button, document.getElementById("kanamafu"));
