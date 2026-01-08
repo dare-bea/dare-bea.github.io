@@ -1,4 +1,5 @@
 let sortWords = false;
+let newLine = false;
 
 const wordsOutput = document.getElementById("wordsOutput");
 const outputDetails = document.getElementById("outputDetails");
@@ -106,6 +107,11 @@ document.getElementById("sortWords")
   sortWords = e.target.checked;
 });
 
+document.getElementById("newLine")
+.addEventListener('input', (e) => {
+  newLine = e.target.checked;
+});
+
 document.getElementById("generateWords")
 .addEventListener('click', () => {
   let words;
@@ -116,7 +122,7 @@ document.getElementById("generateWords")
                           wordCount, optionalWeight);
   }
   if (sortWords) words.sort();
-  wordsOutput.innerText = words.join(" ");
+  wordsOutput.innerText = words.join(newLine ? "\n" : " ");
   outputDetails.innerText =
     (words.length === 0)
     ? `No words generated.`
@@ -137,6 +143,8 @@ function updateScreen() {
   optionalWeightInput.value = optionalWeight;
   const sortWordsInput = document.getElementById("sortWords")
   sortWordsInput.value = sortWords;
+  const newLineInput = document.getElementById("newLine")
+  newLineInput.value = newLine;
   
   const filTable = document.getElementById("filters");
   
