@@ -145,7 +145,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     loadNavigation()
     .then(function () {
-        if (header.classList.contains("cl-settings")) pushOptions("/clsettings.html");
+        if (header.classList.contains("cl-settings")) pushOptions("/games/clsettings.html");
         if (!header.classList.contains("no-theme")) pushThemeSelect();
     });
 })
