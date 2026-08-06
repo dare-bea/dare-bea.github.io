@@ -49,16 +49,12 @@ ul.nav-bar {
     border-bottom: 2px solid #666;
 }
 
-ul.nav-bar li :is(
-        a, .interact, button, select):is(
-        :hover, :focus-within) {
+ul.nav-bar li :is(a, .interact, button, select) {
     color: #fff;
     background-color: #444;
 }
 
-ul.nav-bar li :is(
-        a, .interact, button, select):is(
-        :hover, :focus-within) {
+ul.nav-bar li :is(a, .interact, button, select):is(:hover, :focus-within) {
     color: white;
     border-bottom: 2px solid dodgerblue;
     background-color: #555;
