@@ -177,3 +177,28 @@ ul.nav-bar li:is(:hover, :focus-within) ul {
 img.fit-contain {
     object-fit: contain;
 }
+
+/* Adapted from https://developer.mozilla.org/en-US/docs/Web/CSS/How_to/Layout_cookbook/Sticky_footers/ */
+
+html, body {
+    height: 100%;
+}
+
+body {
+    min-height: 100%;
+
+    display: flex;
+    flex-direction: column;
+}
+
+#page-header,
+#page-footer {
+    flex-grow: 0;
+    flex-shrink: 0;
+}
+
+#page-main {
+    flex-grow: 1;
+}
+
+/* End adaptation from */

@@ -12,8 +12,9 @@
 </head>
 
 <body>
-    <header id="header"></header>
-    <a href="./docs.html" target="_blank">Help</a>
+    <header id="page-header"></header>
+    <nav><a href="./docs.html" target="_blank">Help</a></nav>
+    <main id="page-main">
     <h1>Queue Esolang Interpreter</h1>
     <br/>
     <button onclick="lastStepType='run';pressRun()">Run</button>
@@ -57,6 +58,7 @@ ed]x</textarea>
     <textarea id=stdout disabled rows=5 cols=100></textarea>
     <br/>
     <button onclick="copyOutput()">Copy Output to Clipboard</button>
+    </main>
 </body>
 
 <script src="esolang-queue.js"></script>

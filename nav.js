@@ -140,7 +140,7 @@ async function loadNavigation() {
 }
 
 document.addEventListener('DOMContentLoaded', function() {
-    header = document.getElementById("header");
+    header = document.getElementById("page-header");
     theme = document.getElementById('theme');
 
     loadNavigation()

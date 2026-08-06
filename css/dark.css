@@ -45,10 +45,6 @@ select {
 
 /* Top-Nav */
 
-ul.nav-bar {
-    border-bottom: 2px solid #666;
-}
-
 ul.nav-bar li :is(a, .interact, button, select) {
     color: #fff;
     background-color: #444;
@@ -78,4 +74,14 @@ ul.nav-bar li ul {
 
 .card:hover {
     background-color: #4c4c4c;
+}
+
+/* Borders */
+
+:is(ul.nav-bar, #page-footer, #page-header):not(:last-child) {
+    border-bottom: 2px solid #666;
+}
+
+:is(ul.nav-bar, #page-footer, #page-header):not(:first-child) {
+    border-top: 2px solid #666;
 }
