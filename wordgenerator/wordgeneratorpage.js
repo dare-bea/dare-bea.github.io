@@ -82,7 +82,7 @@ document.getElementById("addCategoryButton")
 
 document.getElementById("addFilterButton")
 .addEventListener('click', () => {
-  wordFilters.push([new RegExp("^(?:)$", "g"), ""]);
+  wordFilters.push([new RegExp("", "g"), ""]);
   updateScreen();
 });
 
@@ -113,14 +113,15 @@ document.getElementById("newLine")
 });
 
 document.getElementById("generateWords")
-.addEventListener('click', () => {
-  let words;
+.addEventListener('click', async () => {
+  let wordsIter;
   if (wordCount == 0) {
-    words = generateAllWords(pattern, categories, wordFilters);
+    wordsIter = generateAllWords(pattern, categories, wordFilters);
   } else {
-    words = generateWords(pattern, categories, wordFilters,
+    wordsIter = generateWords(pattern, categories, wordFilters,
                           wordCount, optionalWeight);
   }
+  const words = await Array.fromAsync(wordsIter);
   if (sortWords) words.sort();
   wordsOutput.innerText = words.join(newLine ? "\n" : " ");
   outputDetails.innerText =

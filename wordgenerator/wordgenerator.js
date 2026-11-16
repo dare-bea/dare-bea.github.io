@@ -52,6 +52,7 @@ class FilterNode {
 }
 
 function product() {
+  try {
   var args = Array.prototype.slice.call(arguments); // makes array from arguments
   return args.reduce(function tl (accumulator, value) {
     var tmp = [];
@@ -62,6 +63,10 @@ function product() {
     });
     return tmp;
   }, [[]]);
+  } catch (e) {
+    console.error("product args:", args)
+    throw e;
+  }
 }
 
 function parsePattern (expression, categories, optionalWeight=0.5) {
@@ -211,11 +216,11 @@ function generateWordFromNode(node, categories) {
         return word;
       }
     default:
-      return undefined;
+      throw RangeError(`bad node type ${node.type}`);
   }
 }
 
-function generateAllWordsFromNode(node, categories) {
+async function* generateAllWordsFromNode(node, categories) {
   categories = categories ?? {};
   /*
   console.log(node.type + '['
@@ -223,30 +228,37 @@ function generateAllWordsFromNode(node, categories) {
               ?? node.child?.type ?? node.child) + ']');*/
   switch (node.type) {
     case "literal":
-      return [node.child];
+      yield node.child;
+      break;
     case "category":
-      return generateAllWordsFromNode(categories[node.child], categories);
+      yield* generateAllWordsFromNode(categories[node.child], categories);
+      break;
     case "unit":
-      return node.children.flatMap(
-        (child) => generateAllWordsFromNode(child, categories)
-      );
+      for (const child of node.children) {
+        yield* generateAllWordsFromNode(child, categories);
+      }
+      break;
     case "sequence":
-      let result = product(...node.children.map(
-        (child) => generateAllWordsFromNode(child, categories)
-      ));
-      return result.map((x) => x.join(""));
+      let result = product(...await Promise.all(node.children.map(
+        async (child) => await Array.fromAsync(generateAllWordsFromNode(child, categories))
+      )));
+      yield* result.map((x) => x.join(""));
+      break;
     case "optional":
-      return ['', ...generateAllWordsFromNode(node.child, categories)];
+      yield '';
+      yield* generateAllWordsFromNode(node.child, categories);
+      break;
     case "filter":
-      return generateAllWordsFromNode(node.child, categories)
+      yield* generateAllWordsFromNode(node.child, categories)
         .filter(word => !word?.match(node.filter));
+      break;
     default:
-      return undefined;
+      throw RangeError(`bad node type ${node.type}`);
   }
 }
 
-function generateWords (pattern, categoryList, wordFilters,
-                        wordCount, optionalWeight) {
+async function* generateWords (pattern, categoryList, wordFilters,
+                               wordCount, optionalWeight) {
   let categories = Object.fromEntries(categoryList);
   wordFilters = wordFilters ?? [];
   let ast = parsePattern(pattern, categories);
@@ -264,7 +276,6 @@ function generateWords (pattern, categoryList, wordFilters,
   if (wordCount === undefined) {
     return generateWordFromNode(ast, categoryTrees);
   }
-  let words = [];
   for (var i = 1; i <= wordCount; i++) {
     let regenerate;
     let fullRegens = 0;
@@ -310,16 +321,15 @@ function generateWords (pattern, categoryList, wordFilters,
         fullRegens++;
         continue;
       };
-      words.push(word);
+      yield word;
     } while (regenerate && fullRegens < maxFullRegens);
     if (fullRegens >= maxFullRegens) {
       console.error("Attempt limit reached. Attempt skipped.")
     }
   }
-  return words;
 }
 
-function generateAllWords(pattern, categoryList, wordFilters) {
+async function* generateAllWords(pattern, categoryList, wordFilters) {
   let categories = Object.fromEntries(categoryList);
   wordFilters = wordFilters ?? [];
   let ast = parsePattern(pattern, categories);
@@ -329,12 +339,14 @@ function generateAllWords(pattern, categoryList, wordFilters) {
     )
   );
   let wordFilterReplacements = Object.fromEntries(
-    wordFilters.filter(([f, r]) => r.startsWith("#"))
-    .map(([f, r]) => [r, generateAllWordsFromNode(parsePattern(
-      r.slice(1), categories, optionalWeight ?? 0.5), categoryTrees)])
+    await Promise.all(
+      wordFilters.filter(([f, r]) => r.startsWith("#"))
+      .map(async ([f, r]) => [r, await Array.fromAsync(generateAllWordsFromNode(parsePattern(
+        r.slice(1), categories, optionalWeight ?? 0.5), categoryTrees))])
+    )
   );
-  let words = generateAllWordsFromNode(ast, categoryTrees);
-  words = words.flatMap((word) => {
+  let seenWords = new Set();
+  for await (const word of generateAllWordsFromNode(ast, categoryTrees)) {
     let results = [word];
     for (const [filter, replacement] of wordFilters) {
       if (replacement === "!") {
@@ -355,14 +367,14 @@ function generateAllWords(pattern, categoryList, wordFilters) {
       }
       results = results.map((result) => result.replaceAll(filter, replacement));
     }
-    return results;
-  });
-  return Array.from(new Set(words));
+    let filtered_results = new Set(results.filter(r => !seenWords.has(r)));
+    yield* filtered_results;
+    seenWords = seenWords.union(filtered_results);
+  }
 }
 
-// console.log(generateAllWords(pattern, categories, wordFilters));
-
-console.log();
-
-console.log(generateWords(pattern, categories, wordFilters,
-                          wordCount, optionalWeight));
+(async () => {
+  console.log("parameters:", pattern, categories, wordFilters, wordCount, optionalWeight);
+  console.log("generateWords:", await Array.fromAsync(generateWords(pattern, categories, wordFilters, wordCount, optionalWeight)));
+  // console.log("generateAllWords:", await Array.fromAsync(generateAllWords(pattern, categories, wordFilters)));
+})();
