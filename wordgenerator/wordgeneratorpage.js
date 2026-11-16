@@ -76,7 +76,7 @@ document.getElementById("clearAllButton")
 
 document.getElementById("addCategoryButton")
 .addEventListener('click', () => {
-  categories.push(["", ""]);
+  categories.push(["A", ""]);
   updateScreen();
 });
 
